@@ -1,0 +1,14 @@
+Info 0    [23:23:01.113] Starting TS Server
+Info 1    [23:23:01.114] Version: 4.4.4
+Info 2    [23:23:01.114] Arguments: /usr/bin/node /usr/bin/tsserver --logFile /home/zxh/Dropbox/Documents/研究生/算法/.log/tsserver.log --logVerbosity info --cancellationPipeName /tmp/2551cd6721d8f90dda9e6d450ef0973e/tscancellation*
+Info 3    [23:23:01.114] Platform: linux NodeVersion: 17 CaseSensitive: true
+Info 4    [23:23:01.114] ServerMode: undefined syntaxOnly: false hasUnknownServerMode: undefined
+Info 5    [23:23:01.129] Format host information updated
+Info 6    [23:23:01.131] Search path: /home/zxh/Dropbox/Documents/研究生/算法
+Info 7    [23:23:01.132] For info: /home/zxh/Dropbox/Documents/研究生/算法/test.js :: No config files found.
+Info 8    [23:23:01.136] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 9    [23:23:04.322] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 1 structureChanged: true structureIsReused:: Not Elapsed: 3185.878636999987ms
+Info 10   [23:23:04.323] Project '/dev/null/inferredProject1*' (Inferred)
+Info 11   [23:23:04.323] 	Files (19)
+
+Info 12   [23:23:04.323] -----------------------------------------------

@@ -1,0 +1,4220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-01-08 Sat 22:03 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>算法学习</title>
+<meta name="author" content="Zhou Xianghui" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+</style>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">算法学习</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org56a446d">1. 算法学习</a>
+<ul>
+<li><a href="#org8522fe0">1.1. 二叉树</a>
+<ul>
+<li><a href="#org4e411c5">1.1.1. 二叉树理论基础</a></li>
+<li><a href="#org733ac4b">1.1.2. 二叉树的递归遍历</a></li>
+<li><a href="#org9fadde3">1.1.3. 二叉树的迭代遍历</a></li>
+<li><a href="#orgea7d836">1.1.4. 二叉树的统一迭代法</a></li>
+<li><a href="#org50cae10">1.1.5. 二叉树的层序遍历</a></li>
+<li><a href="#org52e1969">1.1.6. 翻转二叉树</a></li>
+<li><a href="#orgdcbf412">1.1.7. 二叉树总结</a></li>
+<li><a href="#org7520cbc">1.1.8. 对称二叉树</a></li>
+<li><a href="#org4467f4b">1.1.9. 二叉树的最大深度</a></li>
+<li><a href="#org3678bb2">1.1.10. 二叉树的最小深度</a></li>
+<li><a href="#orge8c31ae">1.1.11. 完全二叉树的节点个数</a></li>
+<li><a href="#orgfae1195">1.1.12. 平衡二叉树</a></li>
+<li><a href="#org8ab3037">1.1.13. 二叉树的所有路径</a></li>
+<li><a href="#org42076a3">1.1.14. 二叉树周末总结</a></li>
+</ul>
+</li>
+<li><a href="#org6ef8227">1.2. 回溯算法</a>
+<ul>
+<li><a href="#org2d3e703">1.2.1. 理论基础</a></li>
+<li><a href="#orgeff24bb">1.2.2. 组合问题</a></li>
+<li><a href="#org9a018cb">1.2.3. 组合总和 III</a></li>
+<li><a href="#org554e87f">1.2.4. 电话号码的字母组合</a></li>
+<li><a href="#orga6dbf19">1.2.5. 分割回文串</a></li>
+<li><a href="#orgbffc90e">1.2.6. 复原 IP 地址</a></li>
+</ul>
+</li>
+<li><a href="#org3dd4cea">1.3. 贪心算法</a>
+<ul>
+<li><a href="#org7b3f546">1.3.1. 贪心算法理论基础</a></li>
+<li><a href="#org1c3a864">1.3.2. 分发饼干</a></li>
+<li><a href="#orge169a60">1.3.3. 摆动序列</a></li>
+<li><a href="#org26854d5">1.3.4. 最大子序和</a></li>
+<li><a href="#orgb4835ba">1.3.5. 买卖股票的最佳时机 II</a></li>
+<li><a href="#orga1d2ae8">1.3.6. 跳跃游戏</a></li>
+<li><a href="#orgcc5237f">1.3.7. 跳跃游戏 II</a></li>
+<li><a href="#org2a8f37a">1.3.8. k 次取反后最大化的数组和</a></li>
+</ul>
+</li>
+<li><a href="#orge3d6714">1.4. 动态规划</a>
+<ul>
+<li><a href="#org3ed3193">1.4.1. 动态规划理论基础</a></li>
+<li><a href="#org4051bc5">1.4.2. 斐波拉数列</a></li>
+<li><a href="#org9daf327">1.4.3. 爬楼梯</a></li>
+<li><a href="#orgfbb362d">1.4.4. 使用最小花费爬楼梯</a></li>
+<li><a href="#org0d59076">1.4.5. 动态规划周总结</a></li>
+<li><a href="#org8b87d63">1.4.6. 不同路径</a></li>
+<li><a href="#org0459d8d">1.4.7. 不同路径</a></li>
+<li><a href="#org3403faa">1.4.8. 整数拆分</a></li>
+<li><a href="#org6e2db2b">1.4.9. 不同的二叉搜索树</a></li>
+<li><a href="#orgaf8d199">1.4.10. 01 背包理论基础 (一)</a></li>
+<li><a href="#org99d4896">1.4.11. 01 背包理论基础 (二)</a></li>
+</ul>
+</li>
+<li><a href="#org3d876dd">1.5. 排序算法</a>
+<ul>
+<li><a href="#org6064ce1">1.5.1. 冒泡排序</a></li>
+<li><a href="#org75b105d">1.5.2. 选择排序</a></li>
+<li><a href="#org6cb55ba">1.5.3. 插入排序</a></li>
+<li><a href="#org6a835e6">1.5.4. 希尔排序</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org56a446d" class="outline-2">
+<h2 id="org56a446d"><span class="section-number-2">1.</span> 算法学习</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li><a href="https://programmercarl.com">代码随想录</a></li>
+<li><a href="https://sort.hust.cc/">十大经典排序算法</a></li>
+</ul>
+</div>
+<div id="outline-container-org8522fe0" class="outline-3">
+<h3 id="org8522fe0"><span class="section-number-3">1.1.</span> 二叉树</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-org4e411c5" class="outline-4">
+<h4 id="org4e411c5"><span class="section-number-4">1.1.1.</span> 二叉树理论基础</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<ul class="org-ul">
+<li>种类
+<ul class="org-ul">
+<li>满二叉树</li>
+<li>完全二叉树</li>
+<li>二叉搜索树
+二叉搜索树是一颗有序树
+<ul class="org-ul">
+<li>若左子树不空，则左子树上的所有节点的值均小于他根节点的值</li>
+<li>若右子树不空，则右子树上的所有节点的值均大于他根节点的值</li>
+<li>他的左、右子树也为二叉搜索树
+<img src="https://img-blog.csdnimg.cn/20200806190304693.png" alt="20200806190304693.png" /></li>
+</ul></li>
+<li>平衡二叉搜索树</li>
+</ul></li>
+<li>存储方式
+<ul class="org-ul">
+<li>链式存储 指针
+<img src="./images/screenshot-02.png" alt="screenshot-02.png" /></li>
+<li>顺序存储 数组
+<img src="./images/screenshot-04.png" alt="screenshot-04.png" />
+<ul class="org-ul">
+<li>使用数组存储二叉树
+如果父节点的数组下标为 i,那么他的左孩子为 i*2+1,右孩子为 i*2+2</li>
+</ul></li>
+</ul></li>
+<li>遍历方式
+<ul class="org-ul">
+<li>深度优先遍历 先往深走，遇到叶子节点再往回走
+<ul class="org-ul">
+<li>前序遍历（递归法，迭代法）</li>
+<li>中序遍历</li>
+<li>后序遍历</li>
+</ul></li>
+<li>广度有限遍历 一层一层的去遍历
+<ul class="org-ul">
+<li>层次遍历 (迭代法)</li>
+</ul></li>
+<li>前中后指的是中间节点的遍历顺序</li>
+<li>栈是递归的一种实现结构</li>
+<li>广度优先遍历一般使用队列实现</li>
+</ul></li>
+<li><p>
+定义
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #51afef;">function</span> <span style="color: #c678dd;">TreeNode</span>(<span style="color: #dcaeea;">val</span>, <span style="color: #dcaeea;">left</span>, <span style="color: #dcaeea;">right</span>) {
+  <span style="color: #a9a1e1;">this</span>.val = val === <span style="color: #a9a1e1;">undefined</span> ? <span style="color: #dd8844; font-weight: bold;">0</span> : val;
+  <span style="color: #a9a1e1;">this</span>.left = left === <span style="color: #a9a1e1;">undefined</span> ? <span style="color: #a9a1e1;">null</span> : left;
+  <span style="color: #a9a1e1;">this</span>.right = right === <span style="color: #a9a1e1;">undefined</span> ? <span style="color: #a9a1e1;">null</span> : right;
+}
+</pre>
+</div></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #51afef;">struct</span> <span style="color: #ECBE7B;">TreeNode</span> {
+  <span style="color: #ECBE7B;">int</span> <span style="color: #dcaeea;">val</span>;
+  <span style="color: #ECBE7B;">TreeNode</span> *<span style="color: #dcaeea;">left</span>;
+  <span style="color: #ECBE7B;">TreeNode</span> *<span style="color: #dcaeea;">right</span>;
+  <span style="color: #c678dd;">TreeNode</span>(<span style="color: #ECBE7B;">int</span> <span style="color: #dcaeea;">x</span>) : val(x), left(<span style="color: #a9a1e1;">NULL</span>), right(<span style="color: #a9a1e1;">NULL</span>) {}
+};
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org733ac4b" class="outline-4">
+<h4 id="org733ac4b"><span class="section-number-4">1.1.2.</span> 二叉树的递归遍历</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<ul class="org-ul">
+<li>递归三要素
+<ol class="org-ol">
+<li><b>确定递归函数的参数与返回值</b> : 确定哪些参数是递归的过程中需要处理的，那么就在递归函数里加上这个参数， 并且还要明确每次递归的返回值是什么进而确定递归函数的返回类型。</li>
+<li><b>确定终止条件</b>: 写完了递归算法, 运行的时候，经常会遇到栈溢出的错误，就是没写终止条件或者终止条件写的不对，操作系统也是用一个栈的结构来保存每一层递归的信息，如果递归没有终止，操作系统的内存栈必然就会溢出。</li>
+<li><b>确定单层递归的逻辑</b>:  确定每一层递归需要处理的信息。在这里也就会重复调用自己来实现递归的过程。</li>
+</ol></li>
+<li>以 <b>前序遍历为例</b>
+<ol class="org-ol">
+<li><p>
+<b>递归函数的参数与返回值</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #51afef;">function</span> <span style="color: #c678dd;">preOrderTraveral</span>(<span style="color: #dcaeea;">root</span>) {}
+</pre>
+</div></li>
+<li><p>
+<b>终止条件</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-js">  <span style="color: #51afef;">function</span> <span style="color: #c678dd;">preOrderTraveral</span>(<span style="color: #dcaeea;">root</span>) {
+    <span style="color: #51afef;">if</span> (!root) {
+      <span style="color: #51afef;">return</span>;
+    }
+  }
+</pre>
+</div></li>
+<li><p>
+<b>单层递归的逻辑</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-js">  <span style="color: #51afef;">function</span> <span style="color: #c678dd;">preOrderTraveral</span>(<span style="color: #dcaeea;">root</span>) {
+    <span style="color: #51afef;">if</span> (!root) {
+      <span style="color: #51afef;">return</span>;
+    }
+  console.log(root.val);
+  preOrderTraveral(root.left)
+  preOrderTraveral(root.right)
+  }
+
+</pre>
+</div></li>
+</ol></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9fadde3" class="outline-4">
+<h4 id="org9fadde3"><span class="section-number-4">1.1.3.</span> 二叉树的迭代遍历</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<p>
+<b>递归的实现就是：每一次递归调用都会把函数的局部变量、参数值和返回地址等压入调用栈中</b> ，然后递归返回的时候，从栈顶弹出上一次递归的各项参数，所以这就是递归为什么可以返回上一层位置的原因。
+</p>
+
+<p>
+<a href="https://tva1.sinaimg.cn/large/008eGmZEly1gnbmss7603g30eq0d4b2a.gif">前序遍历 迭代法</a>
+</p>
+
+<ul class="org-ul">
+<li>前序遍历 中左右，所以加入栈的顺序是先看右边节点，再看左边节点
+<ol class="org-ol">
+<li>先把根节点放入栈中</li>
+<li>然后检查栈中是否含有元素</li>
+<li>弹出栈中元素，并加入到结果数组中</li>
+<li>检查弹出元素右节点是否存在，加入栈中</li>
+<li>检查弹出元素左节点是否存在，加入栈中</li>
+<li>返回 2</li>
+</ol></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #51afef;">var</span> <span style="color: #dcaeea;">preorderTraversal</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>) {
+  <span style="color: #51afef;">if</span> (!root) {
+    <span style="color: #51afef;">return</span>;
+  }
+  <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">stack</span> = [],
+    res = [];
+
+  stack.push(root);
+  <span style="color: #51afef;">while</span> (stack.length &gt; <span style="color: #dd8844; font-weight: bold;">0</span>) {
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">node</span> = stack.pop();
+    res.push(node.val);
+    <span style="color: #51afef;">if</span> (node.right) {
+      stack.push(node.right);
+    }
+    <span style="color: #51afef;">if</span> (node.left) {
+      stack.push(node.left);
+    }
+  }
+
+  <span style="color: #51afef;">return</span> res;
+};
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>中序遍历
+<ol class="org-ol">
+<li>使用栈处理节点的元素，指针遍历访问节点</li>
+<li>判断当前节点为空 或者栈是否为空</li>
+<li>循环向左子树遍历，把最左边的节点加入栈中</li>
+<li>当没有左节点时，弹出栈顶元素放到结果数组中，再把当前弹出节点的右子树压入栈中（如果存在）</li>
+<li>返回 2</li>
+</ol></li>
+</ul>
+
+
+<div class="org-src-container">
+<pre class="src src-js">  <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">inorderTraversal</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">head</span>) {
+    <span style="color: #51afef;">if</span> (!head) {
+      <span style="color: #51afef;">return</span>;
+    }
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">stack</span> = [],
+      res = [],
+      cur = head;
+
+    <span style="color: #51afef;">while</span> (stack.length &gt; <span style="color: #dd8844; font-weight: bold;">0</span> || cur) {
+      <span style="color: #51afef;">while</span> (cur) {
+        stack.push(cur);
+        cur = cur.left;
+      }
+      <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">node</span> = stack.pop();
+      res.push(node.val);
+      <span style="color: #51afef;">if</span> (node.right) {
+        cur = node.right;
+      }
+    }
+
+    <span style="color: #51afef;">return</span> res;
+  };
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>后序遍历 是先序遍历结果的反转，即只需要将先序的结果逆转为新的即可
+<ol class="org-ol">
+<li>这里使用 <code>stack2</code> 来保存先序的结果</li>
+<li>将 <code>stack2</code> 中的元素一个一个从栈顶弹出给 <code>res</code> 结果数组即可</li>
+</ol></li>
+</ul>
+
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #51afef;">let</span> <span style="color: #dcaeea;">postorderTraversal</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">head</span>) {
+  <span style="color: #51afef;">if</span> (!head) {
+    <span style="color: #51afef;">return</span>;
+  }
+  <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">stack1</span> = [],
+    stack2 = [],
+    res = [];
+  stack1.push(head);
+
+  <span style="color: #51afef;">while</span> (stack1.length &gt; <span style="color: #dd8844; font-weight: bold;">0</span>) {
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">node</span> = stack1.pop();
+    stack2.push(node);
+    <span style="color: #51afef;">if</span> (node.left) {
+      stack1.push(node.left);
+    }
+    <span style="color: #51afef;">if</span> (node.right) {
+      stack1.push(node.right);
+    }
+  }
+
+  <span style="color: #51afef;">while</span> (stack2.length &gt; <span style="color: #dd8844; font-weight: bold;">0</span>) {
+    res.push(stack2.pop().val);
+  }
+
+  <span style="color: #51afef;">return</span> res;
+};
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgea7d836" class="outline-4">
+<h4 id="orgea7d836"><span class="section-number-4">1.1.4.</span> 二叉树的统一迭代法</h4>
+<div class="outline-text-4" id="text-1-1-4">
+<p>
+<code>迭代实现的先中后序，风格并不统一，除了先序和后序有关联，中序完全是另外一个风格</code>
+</p>
+
+<p>
+中序遍历中使用栈的话，~无法同时解决访问节点（遍历节点）和处理节点（将元素放到结果数组）不一致的情况~
+</p>
+
+<p>
+<code>所以我们就将访问的节点放入栈中，把要处理的节点也放入栈中但是加以标记</code>
+</p>
+
+<p>
+如何标记：~就是要处理的节点放入栈后，紧接着放入一个空指针作为标记~ 这种方法称为 标记法
+</p>
+
+<ul class="org-ul">
+<li><code>迭代法中序遍历</code>
+<ul class="org-ul">
+<li>这里将访问的节点直接加入栈中</li>
+<li><p>
+但如果是处理的节点则后面放入一个空节点，这样只有空节点弹出的时候，才将下一个节点放入结果集合
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">inorderTraversal</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>) {
+    <span style="color: #51afef;">const</span> <span style="color: #dcaeea;">stack</span> = [],
+        res = [];
+    <span style="color: #51afef;">if</span> (root) {
+        stack.push(root);
+    }
+
+    <span style="color: #51afef;">while</span> (stack.length) {
+        <span style="color: #51afef;">const</span> <span style="color: #dcaeea;">node</span> = stack.pop();
+        <span style="color: #51afef;">if</span> (!node) {
+        res.push(stack.pop().val);
+        <span style="color: #51afef;">continue</span>;
+        }
+        node.right &amp;&amp; stack.push(node.right);
+        stack.push(node);
+        stack.push(<span style="color: #a9a1e1;">null</span>);
+        node.left &amp;&amp; stack.push(node.left);
+    }
+
+    <span style="color: #51afef;">return</span> res;
+    };
+</pre>
+</div></li>
+
+<li><code>迭代法前序遍历</code>
+<ul class="org-ul">
+<li><p>
+可以看出这里只与中序遍历更改两两行代码的顺序
+</p>
+<div class="org-src-container">
+<pre class="src src-js">        <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">preorderTraversal</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>) {
+        <span style="color: #51afef;">const</span> <span style="color: #dcaeea;">stack</span> = [],
+            res = [];
+        <span style="color: #51afef;">if</span> (root) {
+            stack.push(root);
+        }
+
+        <span style="color: #51afef;">while</span> (stack.length) {
+            <span style="color: #51afef;">const</span> <span style="color: #dcaeea;">node</span> = stack.pop();
+            <span style="color: #51afef;">if</span> (!node) {
+            res.push(stack.pop().val);
+            <span style="color: #51afef;">continue</span>;
+            }
+            node.right &amp;&amp; stack.push(node.right);
+            node.left &amp;&amp; stack.push(node.left);
+            stack.push(node);
+            stack.push(<span style="color: #a9a1e1;">null</span>);
+        }
+
+        <span style="color: #51afef;">return</span> res;
+        };
+</pre>
+</div></li>
+</ul></li>
+
+<li><p>
+<code>迭代法后序遍历</code>
+</p>
+<ul class="org-ul">
+<li>这里与中序遍历相比，也是只改变了两行代码顺序</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">postorderTraversal</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>) {
+    <span style="color: #51afef;">const</span> <span style="color: #dcaeea;">stack</span> = [],
+        res = [];
+    <span style="color: #51afef;">if</span> (root) {
+        stack.push(root);
+    }
+
+    <span style="color: #51afef;">while</span> (stack.length) {
+        <span style="color: #51afef;">const</span> <span style="color: #dcaeea;">node</span> = stack.pop();
+        <span style="color: #51afef;">if</span> (!node) {
+        res.push(stack.pop().val);
+        <span style="color: #51afef;">continue</span>;
+        }
+        stack.push(node);
+        stack.push(<span style="color: #a9a1e1;">null</span>);
+        node.right &amp;&amp; stack.push(node.right);
+        node.left &amp;&amp; stack.push(node.left);
+    }
+
+    <span style="color: #51afef;">return</span> res;
+    };
+</pre>
+</div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org50cae10" class="outline-4">
+<h4 id="org50cae10"><span class="section-number-4">1.1.5.</span> 二叉树的层序遍历</h4>
+<div class="outline-text-4" id="text-1-1-5">
+<p>
+<code>层序遍历</code> 遍历一个二叉树，就是从左到右一层一层的去遍历二叉树。
+</p>
+
+<p>
+这里需要借助一个辅助数据结构即队列， <b>队列先进先出，符合一层一层遍历的逻辑，而是用栈先进后出适合模拟深度优先遍历也就是递归的逻辑</b>
+</p>
+
+<p>
+<code>而这种层序遍历方式就是图论中的广度优先遍历</code>
+</p>
+
+<ul class="org-ul">
+<li><p>
+二叉树的层序遍历，从上往下
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">levelOrder</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>) {
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">res</span> = [],
+        queue = [];
+
+    queue.push(root);
+
+    <span style="color: #51afef;">if</span> (!root) {
+        <span style="color: #51afef;">return</span> res;
+    }
+
+    <span style="color: #51afef;">while</span> (queue.length &gt; <span style="color: #dd8844; font-weight: bold;">0</span>) {
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">length</span> = queue.length;
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">curLevel</span> = [];
+        <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = <span style="color: #dd8844; font-weight: bold;">0</span>; i &lt; length; i++) {
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">node</span> = queue.shift();
+        curLevel.push(node.val);
+        node.left &amp;&amp; queue.push(node.left);
+        node.right &amp;&amp; queue.push(node.right);
+        }
+        res.push(curLevel);
+    }
+
+    <span style="color: #51afef;">return</span> res;
+    };
+</pre>
+</div></li>
+
+<li><p>
+二叉树的层序遍历，从下往上
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">levelOrderBottom</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>) {
+    <span style="color: #51afef;">if</span> (!root) {
+        <span style="color: #51afef;">return</span> [];
+    }
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">res</span> = [],
+        queue = [];
+
+    queue.push(root);
+
+    <span style="color: #51afef;">while</span> (queue.length &gt; <span style="color: #dd8844; font-weight: bold;">0</span>) {
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">len</span> = queue.length;
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">curLevel</span> = [];
+        <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = <span style="color: #dd8844; font-weight: bold;">0</span>; i &lt; len; i++) {
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">node</span> = queue.shift();
+        curLevel.push(node.val);
+        node.left &amp;&amp; queue.push(node.left);
+        node.right &amp;&amp; queue.push(node.right);
+        }
+        res.push(curLevel);
+    }
+
+    <span style="color: #51afef;">return</span> res.reverse();
+    };
+</pre>
+</div></li>
+
+<li><p>
+<a href="https://leetcode-cn.com/problems/binary-tree-right-side-view/">二叉树的右视图</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">rightSideView</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>) {
+    <span style="color: #51afef;">if</span> (!root) {
+        <span style="color: #51afef;">return</span> [];
+    }
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">res</span> = [],
+        queue = [];
+    queue.push(root);
+
+    <span style="color: #51afef;">while</span> (queue.length &gt; <span style="color: #dd8844; font-weight: bold;">0</span>) {
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">len</span> = queue.length;
+        <span style="color: #51afef;">while</span> (len--) {
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">node</span> = queue.shift();
+        <span style="color: #51afef;">if</span> (!len) {
+            res.push(node.val);
+        }
+        node.left &amp;&amp; queue.push(node.left);
+        node.right &amp;&amp; queue.push(node.right);
+        }
+    }
+
+    <span style="color: #51afef;">return</span> res;
+    };
+</pre>
+</div></li>
+
+<li><p>
+<a href="https://leetcode-cn.com/problems/average-of-levels-in-binary-tree/">二叉树的层平均值</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">averageOfLevels</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>) {
+      <span style="color: #51afef;">if</span> (!root) {
+        <span style="color: #51afef;">return</span> [];
+      }
+      <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">res</span> = [],
+        queue = [];
+
+      queue.push(root);
+      <span style="color: #51afef;">while</span> (queue.length &gt; <span style="color: #dd8844; font-weight: bold;">0</span>) {
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">len</span> = queue.length;
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">sum</span> = <span style="color: #dd8844; font-weight: bold;">0</span>;
+        <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = <span style="color: #dd8844; font-weight: bold;">0</span>; i &lt; len; i++) {
+          <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">node</span> = queue.shift();
+          sum += node.val;
+          node.left &amp;&amp; queue.push(node.left);
+          node.right &amp;&amp; queue.push(node.right);
+        }
+        res.push(sum / len);
+      }
+
+      <span style="color: #51afef;">return</span> res;
+    };
+</pre>
+</div></li>
+
+<li><p>
+<a href="https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal/">N 叉树的层序遍历</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">levelOrder</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>) {
+    <span style="color: #51afef;">if</span> (!root) {
+        <span style="color: #51afef;">return</span> [];
+    }
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">res</span> = [],
+        queue = [];
+    queue.push(root);
+
+    <span style="color: #51afef;">while</span> (queue.length &gt; <span style="color: #dd8844; font-weight: bold;">0</span>) {
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">len</span> = queue.length;
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">curLevel</span> = [];
+        <span style="color: #51afef;">while</span> (len--) {
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">node</span> = queue.shift();
+        curLevel.push(node.val);
+        node.children.map((item) =&gt; item &amp;&amp; queue.push(item));
+        }
+        res.push(curLevel);
+    }
+
+    <span style="color: #51afef;">return</span> res;
+    };
+</pre>
+</div></li>
+
+<li><p>
+<a href="https://leetcode-cn.com/problems/find-largest-value-in-each-tree-row/">在每个树行中找最大值</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">largestValues</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>) {
+    <span style="color: #51afef;">if</span> (!root) {
+        <span style="color: #51afef;">return</span> [];
+    }
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">res</span> = [],
+        queue = [];
+    queue.push(root);
+    <span style="color: #51afef;">while</span> (queue.length &gt; <span style="color: #dd8844; font-weight: bold;">0</span>) {
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">len</span> = queue.length;
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">max</span> = Number.MIN_SAFE_INTEGER;
+        <span style="color: #51afef;">while</span> (len--) {
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">node</span> = queue.shift();
+        max = Math.max(max, node.val);
+        node.left &amp;&amp; queue.push(node.left);
+        node.right &amp;&amp; queue.push(node.right);
+        }
+        res.push(max);
+    }
+
+    <span style="color: #51afef;">return</span> res;
+    };
+</pre>
+</div></li>
+
+<li><p>
+<a href="https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/">填充每个节点的下一个右侧节点指针</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">connect</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>) {
+    <span style="color: #51afef;">if</span> (!root) {
+        <span style="color: #51afef;">return</span> root;
+    }
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">queue</span> = [];
+    queue.push(root);
+    <span style="color: #51afef;">while</span> (queue.length &gt; <span style="color: #dd8844; font-weight: bold;">0</span>) {
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">len</span> = queue.length;
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">max</span> = Number.MIN_SAFE_INTEGER;
+        <span style="color: #51afef;">while</span> (len--) {
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">node</span> = queue.shift();
+
+        node.left &amp;&amp; queue.push(node.left);
+        node.right &amp;&amp; queue.push(node.right);
+
+        <span style="color: #51afef;">if</span> (len === <span style="color: #dd8844; font-weight: bold;">0</span>) {
+            <span style="color: #51afef;">break</span>;
+        } <span style="color: #51afef;">else</span> {
+            node.next = queue[<span style="color: #dd8844; font-weight: bold;">0</span>];
+        }
+        }
+    }
+
+    <span style="color: #51afef;">return</span> root;
+    };
+</pre>
+</div></li>
+
+<li><p>
+<a href="https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node-ii/">填充每个节点的下一个右侧节点指针 II</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">connect</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>) {
+    <span style="color: #51afef;">if</span> (!root) {
+        <span style="color: #51afef;">return</span> root;
+    }
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">queue</span> = [];
+    queue.push(root);
+    <span style="color: #51afef;">while</span> (queue.length &gt; <span style="color: #dd8844; font-weight: bold;">0</span>) {
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">len</span> = queue.length;
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">max</span> = Number.MIN_SAFE_INTEGER;
+        <span style="color: #51afef;">while</span> (len--) {
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">node</span> = queue.shift();
+
+        node.left &amp;&amp; queue.push(node.left);
+        node.right &amp;&amp; queue.push(node.right);
+
+        <span style="color: #51afef;">if</span> (len === <span style="color: #dd8844; font-weight: bold;">0</span>) {
+            <span style="color: #51afef;">break</span>;
+        } <span style="color: #51afef;">else</span> {
+            node.next = queue[<span style="color: #dd8844; font-weight: bold;">0</span>];
+        }
+        }
+    }
+
+    <span style="color: #51afef;">return</span> root;
+    };
+</pre>
+</div></li>
+
+<li><p>
+<a href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/">二叉树的最大深度</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">maxDepth</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>) {
+    <span style="color: #51afef;">if</span> (!root) {
+        <span style="color: #51afef;">return</span> <span style="color: #dd8844; font-weight: bold;">0</span>;
+    }
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">queue</span> = [],
+        depth = <span style="color: #dd8844; font-weight: bold;">0</span>;
+    queue.push(root);
+    <span style="color: #51afef;">while</span> (queue.length &gt; <span style="color: #dd8844; font-weight: bold;">0</span>) {
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">len</span> = queue.length;
+        <span style="color: #51afef;">while</span> (len--) {
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">node</span> = queue.shift();
+
+        node.left &amp;&amp; queue.push(node.left);
+        node.right &amp;&amp; queue.push(node.right);
+        }
+        depth++;
+    }
+
+    <span style="color: #51afef;">return</span> depth;
+    };
+</pre>
+</div></li>
+
+<li><p>
+<a href="https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/">二叉树的最小深度</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">minDepth</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>) {
+    <span style="color: #51afef;">if</span> (!root) {
+        <span style="color: #51afef;">return</span> <span style="color: #dd8844; font-weight: bold;">0</span>;
+    }
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">queue</span> = [],
+        depth = <span style="color: #dd8844; font-weight: bold;">0</span>;
+    queue.push(root);
+    <span style="color: #51afef;">while</span> (queue.length &gt; <span style="color: #dd8844; font-weight: bold;">0</span>) {
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">len</span> = queue.length;
+        depth++;
+        <span style="color: #51afef;">while</span> (len--) {
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">node</span> = queue.shift();
+
+        <span style="color: #51afef;">if</span> (!node.left &amp;&amp; !node.right) {
+            <span style="color: #51afef;">return</span> depth;
+        }
+
+        node.left &amp;&amp; queue.push(node.left);
+        node.right &amp;&amp; queue.push(node.right);
+        }
+    }
+
+    <span style="color: #51afef;">return</span> depth;
+    };
+</pre>
+</div></li>
+
+<li><code>总结</code> 二叉树的层序遍历，就是图论中的广度优先搜索在二叉树中的应用，需要借助队列来实现</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org52e1969" class="outline-4">
+<h4 id="org52e1969"><span class="section-number-4">1.1.6.</span> <a href="https://leetcode-cn.com/problems/invert-binary-tree/">翻转二叉树</a></h4>
+<div class="outline-text-4" id="text-1-1-6">
+<p>
+想要反转一颗二叉树，只需要把每一个节点的左右孩子交换一下即可
+</p>
+
+<p>
+在遍历的过程中去翻转每一个节点的左右孩子就可以达到整体翻转的效果
+</p>
+
+<p>
+使用前序遍历和后序遍历都可以，唯独中序遍历不方便，因为中序遍历会把某些节点的左右孩子翻转两次，使用层序遍历也是可以的
+</p>
+
+<ul class="org-ul">
+<li>递归法
+<ul class="org-ul">
+<li><p>
+使用前序遍历
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">invertTree</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>) {
+    <span style="color: #51afef;">if</span> (!root) {
+        <span style="color: #51afef;">return</span> root;
+    }
+
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">preorderInvertTree</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>) {
+        <span style="color: #51afef;">if</span> (!root) {
+        <span style="color: #51afef;">return</span> root;
+        }
+        [root.left, root.right] = [root.right, root.left];
+
+        <span style="color: #a9a1e1;">arguments</span>.callee(root.left);
+        <span style="color: #a9a1e1;">arguments</span>.callee(root.right);
+
+        <span style="color: #51afef;">return</span> root;
+    };
+
+    <span style="color: #51afef;">return</span> preorderInvertTree(root);
+    };
+</pre>
+</div></li>
+</ul></li>
+
+<li><p>
+使用层序遍历
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">invertTree</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>) {
+    <span style="color: #51afef;">if</span> (!root) {
+        <span style="color: #51afef;">return</span> root;
+    }
+
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">queue</span> = [];
+    queue.push(root);
+
+    <span style="color: #51afef;">while</span> (queue.length &gt; <span style="color: #dd8844; font-weight: bold;">0</span>) {
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">len</span> = queue.length;
+        <span style="color: #51afef;">while</span> (len--) {
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">node</span> = queue.shift();
+        [node.left, node.right] = [node.right, node.left];
+        node.left &amp;&amp; queue.push(node.left);
+        node.right &amp;&amp; queue.push(node.right);
+        }
+    }
+
+    <span style="color: #51afef;">return</span> root;
+    };
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdcbf412" class="outline-4">
+<h4 id="orgdcbf412"><span class="section-number-4">1.1.7.</span> 二叉树总结</h4>
+<div class="outline-text-4" id="text-1-1-7">
+<ul class="org-ul">
+<li><p>
+二叉树节点 js 定义
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #51afef;">function</span> <span style="color: #c678dd;">TreeNode</span>(<span style="color: #dcaeea;">val</span>, <span style="color: #dcaeea;">left</span>, <span style="color: #dcaeea;">right</span>) {
+    <span style="color: #a9a1e1;">this</span>.val = (<span style="color: #51afef;">var</span> === <span style="color: #a9a1e1;">undefined</span> ? <span style="color: #dd8844; font-weight: bold;">0</span> : val);
+    <span style="color: #a9a1e1;">this</span>.left= (lef t=== <span style="color: #a9a1e1;">undefined</span> ? <span style="color: #a9a1e1;">null</span> : left);
+    <span style="color: #a9a1e1;">this</span>.right = (right === <span style="color: #a9a1e1;">undefined</span> ? <span style="color: #a9a1e1;">null</span>: right);
+}
+</pre>
+</div></li>
+<li>二叉搜索书的 js 实现</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7520cbc" class="outline-4">
+<h4 id="org7520cbc"><span class="section-number-4">1.1.8.</span> <a href="https://programmercarl.com/0101.%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91.html">对称二叉树</a></h4>
+<div class="outline-text-4" id="text-1-1-8">
+<p>
+给定一个二叉树，检查他是否是镜像对称的
+</p>
+
+<ul class="org-ul">
+<li><p>
+递归法
+</p>
+<ol class="org-ol">
+<li>显然根节点为空时，这是一颗对称的二叉树</li>
+<li>递归函数的参数即为当前节点的左右节点
+<ol class="org-ol">
+<li>如果 <code>left</code> 为空 <code>right</code> 不为空，则返回 <code>false</code></li>
+<li>如果 <code>left</code> 不为空 <code>right</code> 为空，则返回 <code>false</code></li>
+<li>如果 <code>left</code> 为空 <code>right</code> 为空，则返回 <code>true</code></li>
+<li>如果 <code>left.val !== right.val</code> ，则返回 <code>false</code></li>
+<li>最后的情况是 <code>left, right</code> 都不为空且数值相等的时候
+<ol class="org-ol">
+<li>这里我们需要比较二叉树的外侧是否对称，需要传入 <code>left</code> 的左孩子，~right~ 的右孩子</li>
+<li>这里我们需要比较二叉树的内侧是否对称，需要传入 <code>left</code> 的右孩子，~right~ 的左孩子</li>
+<li>只有外侧与内侧同时对称才返回 <code>true</code> 否则返回 <code>false</code></li>
+</ol></li>
+</ol></li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-js">        <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">isSymmetric</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>) {
+
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">isSymmetricRecursive</span> = (root) =&gt; {
+            <span style="color: #51afef;">if</span> (!root) {
+            <span style="color: #51afef;">return</span> <span style="color: #a9a1e1;">true</span>;
+            }
+
+            <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">compare</span> = (left, right) =&gt; {
+            <span style="color: #51afef;">if</span> (!left &amp;&amp; right) {
+                <span style="color: #51afef;">return</span> <span style="color: #a9a1e1;">false</span>;
+            } <span style="color: #51afef;">else</span> <span style="color: #51afef;">if</span> (left &amp;&amp; !right) {
+                <span style="color: #51afef;">return</span> <span style="color: #a9a1e1;">false</span>;
+            } <span style="color: #51afef;">else</span> <span style="color: #51afef;">if</span> (!left &amp;&amp; !right) {
+                <span style="color: #51afef;">return</span> <span style="color: #a9a1e1;">true</span>;
+            } <span style="color: #51afef;">else</span> <span style="color: #51afef;">if</span> (left.val !== right.val) {
+                <span style="color: #51afef;">return</span> <span style="color: #a9a1e1;">false</span>;
+            }
+
+            <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">outside</span> = compare(left.left, right.right);
+            <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">inside</span> = compare(left.right, right.left);
+            <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">isSame</span> = outside &amp;&amp; inside;
+
+            <span style="color: #51afef;">return</span> isSame;
+            };
+
+            <span style="color: #51afef;">return</span> compare(root.left, root.right);
+        };
+
+        <span style="color: #51afef;">return</span> isSymmetricRecursive(root);
+        };
+</pre>
+</div>
+
+<ul class="org-ul">
+<li></li>
+</ul></li>
+<li><p>
+迭代法
+</p>
+<ol class="org-ol">
+<li>显然根节点为空时，这是一颗对称的二叉树</li>
+<li>当根节点不为空时，把当前节点的左右节点都先后进入队列 <code>queue</code>
+<ol class="org-ol">
+<li>遍历这个队列，从 <code>left, right</code>  先后出列</li>
+<li>如果 <code>left, right</code> 都为空，说明是对称的</li>
+<li>如果 <code>left, right</code> 只有一个为空，或者二者的值不等，说明不是对称的，直接返回 <code>false</code></li>
+<li>将 <code>left.left, right.right</code> 入队列</li>
+<li>将 <code>left.right, right.left</code> 如队列</li>
+<li>继续遍历 <code>queue</code></li>
+<li></li>
+
+<li></li>
+
+<li></li>
+</ol></li>
+</ol>
+<div class="org-src-container">
+<pre class="src src-js">        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">isSymmetricTraversal</span> = (root) =&gt; {
+            <span style="color: #51afef;">if</span> (!root) {
+            <span style="color: #51afef;">return</span> <span style="color: #a9a1e1;">true</span>;
+            }
+
+            <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">queue</span> = [];
+            queue.push(root.left);
+            queue.push(root.right);
+
+            <span style="color: #51afef;">while</span> (queue.length &gt; <span style="color: #dd8844; font-weight: bold;">0</span>) {
+            <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">left</span> = queue.shift(),
+                right = queue.shift();
+            <span style="color: #51afef;">if</span> (!left &amp;&amp; !right) {
+                <span style="color: #51afef;">continue</span>;
+            }
+            <span style="color: #51afef;">if</span> (!left || !right || left.val !== right.val) {
+                <span style="color: #51afef;">return</span> <span style="color: #a9a1e1;">false</span>;
+            }
+
+            queue.push(left.left);
+            queue.push(right.right);
+            queue.push(left.right);
+            queue.push(right.left);
+            }
+
+            <span style="color: #51afef;">return</span> <span style="color: #a9a1e1;">true</span>;
+        };
+</pre>
+</div></li>
+<li>相关题目
+<ul class="org-ul">
+<li><a href="https://leetcode-cn.com/problems/same-tree/">100-相同的树</a>
+<ul class="org-ul">
+<li>这里使用了同时遍历两棵树 <code>p,q</code></li>
+<li><p>
+判断每一个节点是否相等 这里使用队列保存每次遍历的节点 <code>nodeP, nodeQ</code>
+</p>
+<ul class="org-ul">
+<li>如果一空一非空 则直接返回 <code>false</code></li>
+<li>如果两个都是空 则继续遍历</li>
+<li>遍历到结束，说面两棵树完全相同，返回 <code>true</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-js">            <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">isSameTree</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">p</span>, <span style="color: #dcaeea;">q</span>) {
+            <span style="color: #51afef;">if</span> (!q &amp;&amp; !p) {
+                <span style="color: #51afef;">return</span> <span style="color: #a9a1e1;">true</span>;
+            } <span style="color: #51afef;">else</span> <span style="color: #51afef;">if</span> ((!q &amp;&amp; p) || (q &amp;&amp; !p) || p.val !== q.val) {
+                <span style="color: #51afef;">return</span> <span style="color: #a9a1e1;">false</span>;
+            } <span style="color: #51afef;">else</span> {
+                <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">queue</span> = [];
+                queue.push(p, q);
+
+                <span style="color: #51afef;">while</span> (queue.length &gt; <span style="color: #dd8844; font-weight: bold;">0</span>) {
+                <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">nodeP</span> = queue.shift(),
+                    nodeQ = queue.shift();
+                <span style="color: #51afef;">if</span> (!nodeP &amp;&amp; !nodeQ) {
+                    <span style="color: #51afef;">continue</span>;
+                }
+                <span style="color: #51afef;">if</span> (!nodeP || !nodeQ || nodeP.val !== nodeQ.val) {
+                    <span style="color: #51afef;">return</span> <span style="color: #a9a1e1;">false</span>;
+                }
+
+                queue.push(nodeP.left);
+                queue.push(nodeQ.left);
+                queue.push(nodeP.right);
+                queue.push(nodeQ.right);
+                }
+
+                <span style="color: #51afef;">return</span> <span style="color: #a9a1e1;">true</span>;
+            }
+            };
+</pre>
+</div></li>
+</ul></li>
+<li><p>
+<a href="https://leetcode-cn.com/problems/subtree-of-another-tree/">572-另一颗树的子树</a>
+</p>
+<ul class="org-ul">
+<li>先找到另一颗子树根节点在此树的位置</li>
+<li>在从这两个节点比较两颗树是否完全相同</li>
+<li>如果不等就继续遍历寻找相等的子节点</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-js">        <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">isSubtree</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>, <span style="color: #dcaeea;">subRoot</span>) {
+            <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">isSameTree</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">p</span>, <span style="color: #dcaeea;">q</span>) {
+                <span style="color: #51afef;">if</span> (!q &amp;&amp; !p) {
+                <span style="color: #51afef;">return</span> <span style="color: #a9a1e1;">true</span>;
+                } <span style="color: #51afef;">else</span> <span style="color: #51afef;">if</span> ((!q &amp;&amp; p) || (q &amp;&amp; !p) || p.val !== q.val) {
+                <span style="color: #51afef;">return</span> <span style="color: #a9a1e1;">false</span>;
+                } <span style="color: #51afef;">else</span> {
+                <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">queue</span> = [];
+                queue.push(p, q);
+
+                <span style="color: #51afef;">while</span> (queue.length &gt; <span style="color: #dd8844; font-weight: bold;">0</span>) {
+                    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">nodeP</span> = queue.shift(),
+                    nodeQ = queue.shift();
+                    <span style="color: #51afef;">if</span> (!nodeP &amp;&amp; !nodeQ) {
+                    <span style="color: #51afef;">continue</span>;
+                    }
+                    <span style="color: #51afef;">if</span> (!nodeP || !nodeQ || nodeP.val !== nodeQ.val) {
+                    <span style="color: #51afef;">return</span> <span style="color: #a9a1e1;">false</span>;
+                    }
+
+                    queue.push(nodeP.left);
+                    queue.push(nodeQ.left);
+                    queue.push(nodeP.right);
+                    queue.push(nodeQ.right);
+                }
+
+                <span style="color: #51afef;">return</span> <span style="color: #a9a1e1;">true</span>;
+                }
+            };
+
+            <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">traversal</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">head</span>, <span style="color: #dcaeea;">subRoot</span>) {
+                <span style="color: #51afef;">if</span> (!head) {
+                <span style="color: #51afef;">return</span>;
+                }
+                <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">stack</span> = [];
+                stack.push(head);
+                <span style="color: #51afef;">while</span> (stack.length &gt; <span style="color: #dd8844; font-weight: bold;">0</span>) {
+                <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">node</span> = stack.pop();
+
+                <span style="color: #51afef;">if</span> (node.val === subRoot.val) {
+                    <span style="color: #51afef;">if</span> (isSameTree(node, subRoot)) {
+                    <span style="color: #51afef;">return</span> <span style="color: #a9a1e1;">true</span>;
+                    }
+                }
+
+                <span style="color: #51afef;">if</span> (node.right) {
+                    stack.push(node.right);
+                }
+                <span style="color: #51afef;">if</span> (node.left) {
+                    stack.push(node.left);
+                }
+                }
+                <span style="color: #51afef;">return</span> <span style="color: #a9a1e1;">false</span>;
+            };
+
+            <span style="color: #51afef;">return</span> traversal(root, subRoot);
+        };
+</pre>
+</div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4467f4b" class="outline-4">
+<h4 id="org4467f4b"><span class="section-number-4">1.1.9.</span> 二叉树的最大深度</h4>
+<div class="outline-text-4" id="text-1-1-9">
+<ul class="org-ul">
+<li><p>
+递归法
+</p>
+<ol class="org-ol">
+<li>当前节点为空时，返回 0</li>
+<li>否则返回 1+当前节点左右子树高度相对大的那一个</li>
+<li>这里使用前序遍历，后序遍历都可</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">maxDepthRecursive</span> = (root) =&gt; {
+        <span style="color: #51afef;">if</span> (!root) {
+        <span style="color: #51afef;">return</span> <span style="color: #dd8844; font-weight: bold;">0</span>;
+        }
+        <span style="color: #51afef;">return</span> (
+        <span style="color: #dd8844; font-weight: bold;">1</span> + Math.max(<span style="color: #a9a1e1;">arguments</span>.callee(root.left), <span style="color: #a9a1e1;">arguments</span>.callee(root.right))
+        );
+    };
+</pre>
+</div></li>
+<li><p>
+迭代法
+</p>
+<ul class="org-ul">
+<li>这里使用的时层序遍历</li>
+<li>每访问一层， <code>depth++</code></li>
+<li></li>
+
+<li></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-js">   <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">maxDepthTraversal</span> = (root) =&gt; {
+     <span style="color: #51afef;">if</span> (!root) {
+       <span style="color: #51afef;">return</span> <span style="color: #dd8844; font-weight: bold;">0</span>;
+     }
+     <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">queue</span> = [],
+       depth = <span style="color: #dd8844; font-weight: bold;">0</span>;
+     queue.push(root);
+     <span style="color: #51afef;">while</span> (queue.length &gt; <span style="color: #dd8844; font-weight: bold;">0</span>) {
+       <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">len</span> = queue.length;
+       <span style="color: #51afef;">while</span> (len--) {
+         <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">node</span> = queue.shift();
+
+         node.left &amp;&amp; queue.push(node.left);
+         node.right &amp;&amp; queue.push(node.right);
+       }
+       depth++;
+     }
+
+     <span style="color: #51afef;">return</span> depth;
+   };
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3678bb2" class="outline-4">
+<h4 id="org3678bb2"><span class="section-number-4">1.1.10.</span> 二叉树的最小深度</h4>
+<div class="outline-text-4" id="text-1-1-10">
+<ul class="org-ul">
+<li>递归法
+<ul class="org-ul">
+<li><p>
+递归法需要注意的是 当 <code>root</code> 只有左子树或者右子树时，此时最小深度不是 1
+<img src="https://img-blog.csdnimg.cn/20210203155800503.png" alt="20210203155800503.png" />
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">minDepthRecusive</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>) {
+        <span style="color: #51afef;">if</span> (!root) {
+        <span style="color: #51afef;">return</span> <span style="color: #dd8844; font-weight: bold;">0</span>;
+        }
+
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">leftDepth</span> = <span style="color: #a9a1e1;">arguments</span>.callee(root.left),
+        rightDepth = <span style="color: #a9a1e1;">arguments</span>.callee(root.right);
+
+        <span style="color: #51afef;">if</span> (!root.left &amp;&amp; root.right) {
+        <span style="color: #51afef;">return</span> <span style="color: #dd8844; font-weight: bold;">1</span> + rightDepth;
+        }
+
+        <span style="color: #51afef;">if</span> (root.left &amp;&amp; !root.right) {
+        <span style="color: #51afef;">return</span> <span style="color: #dd8844; font-weight: bold;">1</span> + leftDepth;
+        }
+
+        <span style="color: #51afef;">return</span> <span style="color: #dd8844; font-weight: bold;">1</span> + Math.min(leftDepth, rightDepth);
+    };
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>迭代法
+<ul class="org-ul">
+<li><p>
+这里使用的是层序遍历，当找到一个节点没有左右子节点即退出
+</p>
+<div class="org-src-container">
+<pre class="src src-js">        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">minDepthTraversal</span> = (root) =&gt; {
+            <span style="color: #51afef;">if</span> (!root) {
+            <span style="color: #51afef;">return</span> <span style="color: #dd8844; font-weight: bold;">0</span>;
+            }
+            <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">queue</span> = [],
+            depth = <span style="color: #dd8844; font-weight: bold;">0</span>;
+            queue.push(root);
+            <span style="color: #51afef;">while</span> (queue.length &gt; <span style="color: #dd8844; font-weight: bold;">0</span>) {
+            <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">len</span> = queue.length;
+            depth++;
+            <span style="color: #51afef;">while</span> (len--) {
+                <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">node</span> = queue.shift();
+
+                <span style="color: #51afef;">if</span> (!node.left &amp;&amp; !node.right) {
+                <span style="color: #51afef;">return</span> depth;
+                }
+
+                node.left &amp;&amp; queue.push(node.left);
+                node.right &amp;&amp; queue.push(node.right);
+            }
+            }
+
+            <span style="color: #51afef;">return</span> depth;
+        };
+</pre>
+</div></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge8c31ae" class="outline-4">
+<h4 id="orge8c31ae"><span class="section-number-4">1.1.11.</span> 完全二叉树的节点个数</h4>
+<div class="outline-text-4" id="text-1-1-11">
+<ul class="org-ul">
+<li><p>
+递归按照普通二叉树的层序遍历
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">countNode</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>) {
+    <span style="color: #51afef;">if</span> (!root) {
+        <span style="color: #51afef;">return</span> <span style="color: #dd8844; font-weight: bold;">0</span>;
+    }
+    <span style="color: #51afef;">return</span> <span style="color: #dd8844; font-weight: bold;">1</span> + <span style="color: #a9a1e1;">arguments</span>.callee(root.left) + <span style="color: #a9a1e1;">arguments</span>.callee(root.right);
+    };
+</pre>
+</div></li>
+<li><p>
+迭代按照普通二叉树的层序遍历
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">countNodes</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>) {
+    <span style="color: #51afef;">if</span> (!root) {
+        <span style="color: #51afef;">return</span> <span style="color: #dd8844; font-weight: bold;">0</span>;
+    }
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">count</span> = <span style="color: #dd8844; font-weight: bold;">0</span>,
+        queue = [];
+    queue.push(root);
+
+    <span style="color: #51afef;">while</span> (queue.length &gt; <span style="color: #dd8844; font-weight: bold;">0</span>) {
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">len</span> = queue.length;
+        <span style="color: #51afef;">while</span> (len--) {
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">node</span> = queue.pop();
+        count++;
+        node.left &amp;&amp; queue.push(node.left);
+        node.right &amp;&amp; queue.push(node.right);
+        }
+    }
+    <span style="color: #51afef;">return</span> count;
+    };
+</pre>
+</div></li>
+<li><p>
+利用完全二叉树性质
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">countNodes</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>) {
+    <span style="color: #51afef;">if</span> (!root) {
+        <span style="color: #51afef;">return</span> <span style="color: #dd8844; font-weight: bold;">0</span>;
+    }
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">left</span> = root.left,
+        right = root.right,
+        leftHeight = <span style="color: #dd8844; font-weight: bold;">0</span>,
+        rightHeight = <span style="color: #dd8844; font-weight: bold;">0</span>;
+    <span style="color: #51afef;">while</span> (left) {
+        left = left.left;
+        leftHeight++;
+    }
+    <span style="color: #51afef;">while</span> (right) {
+        right = right.right;
+        rightHeight++;
+    }
+    <span style="color: #51afef;">if</span> (leftHeight === rightHeight) {
+        <span style="color: #51afef;">return</span> Math.pow(<span style="color: #dd8844; font-weight: bold;">2</span>, leftHeight + <span style="color: #dd8844; font-weight: bold;">1</span>) - <span style="color: #dd8844; font-weight: bold;">1</span>;
+    }
+    <span style="color: #51afef;">return</span> countNodes(root.left) + countNodes(root.right) + <span style="color: #dd8844; font-weight: bold;">1</span>;
+    };
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfae1195" class="outline-4">
+<h4 id="orgfae1195"><span class="section-number-4">1.1.12.</span> 平衡二叉树</h4>
+<div class="outline-text-4" id="text-1-1-12">
+<p>
+一棵高度平衡二叉树定义为：一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过 1
+</p>
+
+<ul class="org-ul">
+<li>二叉树节点的深度：指从根节点到该节点的最长简单路径边的条数</li>
+<li>二叉树节点的高度：指从该节点到叶子节点的最长简单路径边的条数</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8ab3037" class="outline-4">
+<h4 id="org8ab3037"><span class="section-number-4">1.1.13.</span> 二叉树的所有路径</h4>
+<div class="outline-text-4" id="text-1-1-13">
+<ul class="org-ul">
+<li><p>
+递归法
+</p>
+<ul class="org-ul">
+<li>递归函数的参数与返回值
+<ul class="org-ul">
+<li>当前节点 <code>node</code></li>
+<li>当前路径 <code>curPath</code></li>
+</ul></li>
+<li>确定递归终止条件
+<ul class="org-ul">
+<li>当前节点的左右节点都为 <code>null</code></li>
+</ul></li>
+<li>确定单层递归条件
+<ul class="org-ul">
+<li></li>
+</ul></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">binaryTreePathsTraversal</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>) {
+      <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">res</span> = [];
+      <span style="color: #51afef;">const</span> <span style="color: #dcaeea;">getPath</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">node</span>, <span style="color: #dcaeea;">curPath</span>) {
+        <span style="color: #51afef;">if</span> (!node.left &amp;&amp; !node.right) {
+          curPath += node.val;
+          res.push(curPath);
+          <span style="color: #51afef;">return</span>;
+        }
+        curPath += node.val + <span style="color: #99bb66;">"-&gt;"</span>;
+        node.left &amp;&amp; <span style="color: #a9a1e1;">arguments</span>.callee(node.left, curPath);
+        node.right &amp;&amp; <span style="color: #a9a1e1;">arguments</span>.callee(node.right, curPath);
+      };
+      getPath(root, <span style="color: #99bb66;">""</span>);
+      <span style="color: #51afef;">return</span> res;
+    };
+</pre>
+</div></li>
+
+<li><p>
+迭代法
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">binaryTreePathsTraversal</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">root</span>) {
+      <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">res</span> = [];
+      <span style="color: #51afef;">const</span> <span style="color: #dcaeea;">getPath</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">node</span>, <span style="color: #dcaeea;">curPath</span>) {
+        <span style="color: #51afef;">if</span> (!node.left &amp;&amp; !node.right) {
+          curPath += node.val;
+          res.push(curPath);
+          <span style="color: #51afef;">return</span>;
+        }
+        curPath += node.val + <span style="color: #99bb66;">"-&gt;"</span>;
+        node.left &amp;&amp; <span style="color: #a9a1e1;">arguments</span>.callee(node.left, curPath);
+        node.right &amp;&amp; <span style="color: #a9a1e1;">arguments</span>.callee(node.right, curPath);
+      };
+      getPath(root, <span style="color: #99bb66;">""</span>);
+      <span style="color: #51afef;">return</span> res;
+    };
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org42076a3" class="outline-4">
+<h4 id="org42076a3"><span class="section-number-4">1.1.14.</span> 二叉树周末总结</h4>
+<div class="outline-text-4" id="text-1-1-14">
+<ul class="org-ul">
+<li>对称二叉树</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org6ef8227" class="outline-3">
+<h3 id="org6ef8227"><span class="section-number-3">1.2.</span> 回溯算法</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-org2d3e703" class="outline-4">
+<h4 id="org2d3e703"><span class="section-number-4">1.2.1.</span> 理论基础</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<ul class="org-ul">
+<li><b>回溯算法</b> 也叫做回溯搜索法，是一种搜索的方式，递归是回溯的副产品，只要有递归就会有回溯</li>
+<li><b>效率</b> 回溯的本质是穷举，穷举所有可能，然后选出我们想要的答案，如果想让回溯高效一点，可以加一些剪枝的操作，但改变不了回溯法就是穷举法的本质</li>
+<li><b>回溯法解决的问题</b>
+<ul class="org-ul">
+<li>组合问题： N 个数里面按一定规则找出 k 个数的集合</li>
+<li>切割问题：一个字符串按一定规则有几种切割方式</li>
+<li>子集问题：一个 N 个数的集合里面有多少符合条件的子集</li>
+<li>排列问题：N 个数按一定规则全排列，有几种排列方式</li>
+<li>棋盘问题：N 皇后，解数独等等</li>
+</ul></li>
+<li><b>如何理解回溯法</b>
+<ol class="org-ol">
+<li>回溯法解决的问题都可以抽象为树形结构</li>
+<li>回溯法解决的都是在集合中递归查找子集，集合的大小就构成了树的宽度，递归的深度，都构成的树的深度</li>
+<li>递归就要有终止条件，所以必然是一颗高度有限的树</li>
+</ol></li>
+<li><b>回溯法模板</b>
+<ul class="org-ul">
+<li>回溯函数模板返回值以及参数
+<ol class="org-ol">
+<li>回溯算法中，函数习惯的名称为 <code>backtracking</code></li>
+<li>回溯算法中，函数返回值一般为 <code>void</code></li>
+<li><p>
+回溯算法中的参数不能一次性确定下来
+</p>
+<div class="org-src-container">
+<pre class="src src-js">        <span style="color: #51afef;">function</span> <span style="color: #c678dd;">backtracking</span>() {
+            <span style="color: #525252;">// </span><span style="color: #525252;">&#20855;&#20307;&#20195;&#30721;</span>
+        }
+</pre>
+</div></li>
+</ol></li>
+<li><p>
+回溯函数终止条件
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">if</span> (&#32456;&#27490;&#26465;&#20214;) {
+        &#23384;&#25918;&#32467;&#26524;;
+        <span style="color: #51afef;">return</span>;
+    }
+</pre>
+</div></li>
+<li><p>
+回溯搜索的遍历过程
+<img src="https://img-blog.csdnimg.cn/20210130173631174.png" alt="20210130173631174.png" />
+</p>
+<ol class="org-ol">
+<li><code>for</code> 循环遍历集合区间，横向遍历</li>
+<li><code>backtracking</code> 调用自己，实现递归，纵向遍历</li>
+</ol>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">for</span> (&#36873;&#25321;: &#26412;&#23618;&#38598;&#21512;&#20013;&#20803;&#32032; (&#26641;&#20013;&#33410;&#28857;&#23401;&#23376;&#30340;&#25968;&#37327;&#23601;&#26159;&#38598;&#21512;&#30340;&#22823;&#23567;)) {
+        &#22788;&#29702;&#33410;&#28857;;
+        backtracking( &#36335;&#24452;&#65292;&#36873;&#25321;&#21015;&#34920; ); <span style="color: #525252;">// </span><span style="color: #525252;">&#36882;&#24402;</span>
+        &#22238;&#28335;&#65292;&#25764;&#38144;&#22788;&#29702;&#32467;&#26524;
+    }
+</pre>
+</div></li>
+<li><p>
+最终算法模板
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">function</span> <span style="color: #c678dd;">backtracking</span>(<span style="color: #dcaeea;">&#21442;&#25968;</span>) {
+        <span style="color: #51afef;">if</span> (&#32456;&#27490;&#26465;&#20214;) {
+            &#23384;&#25918;&#32467;&#26524;;
+            <span style="color: #51afef;">return</span>;
+        }
+
+        <span style="color: #51afef;">for</span> (&#36873;&#25321;&#65306;&#26412;&#23618;&#38598;&#21512;&#20013;&#20803;&#32032;&#65288;&#26641;&#20013;&#33410;&#28857;&#23401;&#23376;&#30340;&#25968;&#37327;&#23601;&#26159;&#38598;&#21512;&#30340;&#22823;&#23567;&#65289;) {
+            &#22788;&#29702;&#33410;&#28857;;
+            backtracking(&#36335;&#24452;&#65292;&#36873;&#25321;&#21015;&#34920;); <span style="color: #525252;">// </span><span style="color: #525252;">&#36882;&#24402;</span>
+            &#22238;&#28335;&#65292;&#25764;&#38144;&#22788;&#29702;&#32467;&#26524;
+        }
+    }
+</pre>
+</div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgeff24bb" class="outline-4">
+<h4 id="orgeff24bb"><span class="section-number-4">1.2.2.</span> 组合问题</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+给定两个整数 n 和 k，返回 1 &#x2026; n 中所有可能的 k 个数的组合。
+</p>
+
+<p>
+示例:
+</p>
+<div class="org-src-container">
+<pre class="src src-js">&#36755;&#20837;: n = <span style="color: #dd8844; font-weight: bold;">4</span>, k = <span style="color: #dd8844; font-weight: bold;">2</span>
+&#36755;&#20986;:
+[
+    [<span style="color: #dd8844; font-weight: bold;">2</span>,<span style="color: #dd8844; font-weight: bold;">4</span>],
+    [<span style="color: #dd8844; font-weight: bold;">3</span>,<span style="color: #dd8844; font-weight: bold;">4</span>],
+    [<span style="color: #dd8844; font-weight: bold;">2</span>,<span style="color: #dd8844; font-weight: bold;">3</span>],
+    [<span style="color: #dd8844; font-weight: bold;">1</span>,<span style="color: #dd8844; font-weight: bold;">2</span>],
+    [<span style="color: #dd8844; font-weight: bold;">1</span>,<span style="color: #dd8844; font-weight: bold;">3</span>],
+    [<span style="color: #dd8844; font-weight: bold;">1</span>,<span style="color: #dd8844; font-weight: bold;">4</span>],
+]
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><p>
+直接解法，使用 <code>for</code> 循环，即 k 层循环，这样嵌套 k 层，使用递归
+</p>
+<ol class="org-ol">
+<li>递归函数的返回值和参数
+<ol class="org-ol">
+<li>result 数组 保存结果</li>
+<li>path 数组 保存当前路线</li>
+<li>n</li>
+<li>k</li>
+<li>startIndex 当前是第几个数</li>
+</ol></li>
+<li>回溯函数终止条件
+<ul class="org-ul">
+<li>当前路线 path 的长度等于 k</li>
+</ul></li>
+<li>单层搜索逻辑
+<ul class="org-ul">
+<li>使用 for 循环进行横向遍历</li>
+<li>递归纵向遍历</li>
+</ul></li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">combine</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">n</span>, <span style="color: #dcaeea;">k</span>) {
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">result</span> = [],
+        path = [];
+
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">combineHelper</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">n</span>, <span style="color: #dcaeea;">k</span>, <span style="color: #dcaeea;">startIndex</span>) {
+        <span style="color: #51afef;">if</span> (path.length === k) {
+        result.push([...path]);
+        <span style="color: #51afef;">return</span>;
+        }
+        <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = startIndex; i &lt;= n - (k - path.length) + <span style="color: #dd8844; font-weight: bold;">1</span>; ++i) {
+        path.push(i);
+        <span style="color: #a9a1e1;">arguments</span>.callee(n, k, i + <span style="color: #dd8844; font-weight: bold;">1</span>);
+        path.pop();
+        }
+    };
+
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">combine</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">n</span>, <span style="color: #dcaeea;">k</span>) {
+        result = [];
+        combineHelper(n, k, <span style="color: #dd8844; font-weight: bold;">1</span>);
+        <span style="color: #51afef;">return</span> result;
+    };
+
+    <span style="color: #51afef;">return</span> combine(n, k);
+    };
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9a018cb" class="outline-4">
+<h4 id="org9a018cb"><span class="section-number-4">1.2.3.</span> 组合总和 III</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+找出所有相加之和为 n 的 k 个数的组合。组合中只允许含有 1 - 9 的正整数，并且每种组合中不存在重复的数字
+</p>
+
+<ul class="org-ul">
+<li>说明：
+<ul class="org-ul">
+<li>所有数字都是正整数。</li>
+<li>解集不能包含重复的组合。</li>
+<li>示例 1: 输入: k = 3, n = 7 输出: [1,2,4]</li>
+<li>示例 2: 输入: k = 3, n = 9 输出: [[1,2,6], [1,3,5], [2,3,4]]</li>
+</ul></li>
+
+<li>思路 本题 k 相当于树的深度，9 相当于树的宽度，而和 n 相当于剪枝的操作</li>
+
+<li>回溯三部曲
+<ol class="org-ol">
+<li>确定递归函数参数
+<ul class="org-ul">
+<li>n 目标的和</li>
+<li>k 数的个数</li>
+<li>i 下一层 for 循环搜索的起始位置</li>
+<li>sum 当前搜集元素的和</li>
+</ul></li>
+<li>确定终止条件
+<ol class="org-ol">
+<li>当前 path 的长度等于 k</li>
+<li>且 sum == n</li>
+</ol></li>
+<li>单层搜索过程
+<ol class="org-ol">
+<li>for 循环固定 i&lt;=9</li>
+<li>path 中加入当前数 i</li>
+<li>sum+=i</li>
+<li>递归纵向遍历</li>
+<li>回溯</li>
+</ol></li>
+</ol></li>
+
+<li>剪枝
+<ul class="org-ul">
+<li>for 循环可以缩减到 <code>i &lt;= 9 - (k - path.size()) + 1</code></li>
+<li>当前 sum 和已经大于 n</li>
+</ul></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #51afef;">var</span> <span style="color: #dcaeea;">combinationSum3</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">k</span>, <span style="color: #dcaeea;">n</span>) {
+  <span style="color: #51afef;">if</span> (k &gt; <span style="color: #dd8844; font-weight: bold;">9</span> || k &lt; <span style="color: #dd8844; font-weight: bold;">1</span>) <span style="color: #51afef;">return</span> [];
+
+  <span style="color: #51afef;">const</span> <span style="color: #dcaeea;">res</span> = [],
+    path = [];
+
+  <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">maxV</span> = (k) =&gt; (k * (<span style="color: #dd8844; font-weight: bold;">9</span> + <span style="color: #dd8844; font-weight: bold;">10</span> - k)) / <span style="color: #dd8844; font-weight: bold;">2</span>,
+    minV = (k) =&gt; (k * (<span style="color: #dd8844; font-weight: bold;">1</span> + k)) / <span style="color: #dd8844; font-weight: bold;">2</span>;
+
+  <span style="color: #51afef;">function</span> <span style="color: #c678dd;">backtracking</span>(<span style="color: #dcaeea;">k</span>, <span style="color: #dcaeea;">n</span>, <span style="color: #dcaeea;">i</span>, <span style="color: #dcaeea;">sum</span>) {
+    <span style="color: #51afef;">const</span> <span style="color: #dcaeea;">len</span> = path.length;
+    <span style="color: #51afef;">if</span> (len &gt; k || sum &gt; n) {
+      <span style="color: #51afef;">return</span>;
+    }
+
+    <span style="color: #51afef;">if</span> (maxV(k - len) &lt; n - sum) {
+      <span style="color: #51afef;">return</span>;
+    }
+    <span style="color: #51afef;">if</span> (minV(k - len) &gt; n - sum) {
+      <span style="color: #51afef;">return</span>;
+    }
+
+    <span style="color: #51afef;">if</span> (len === k &amp;&amp; sum === n) {
+      res.push(Array.from(path));
+      <span style="color: #51afef;">return</span>;
+    }
+    <span style="color: #51afef;">const</span> <span style="color: #dcaeea;">min</span> = Math.min(n - sum, <span style="color: #dd8844; font-weight: bold;">9</span> + len - k + <span style="color: #dd8844; font-weight: bold;">1</span>);
+    <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">a</span> = i; a &lt;= min; ++a) {
+      path.push(a);
+      sum += a;
+      <span style="color: #a9a1e1;">arguments</span>.callee(k, n, a + <span style="color: #dd8844; font-weight: bold;">1</span>, sum);
+      path.pop();
+      sum -= a;
+    }
+  }
+
+  backtracking(k, n, <span style="color: #dd8844; font-weight: bold;">1</span>, <span style="color: #dd8844; font-weight: bold;">0</span>);
+
+  <span style="color: #51afef;">return</span> res;
+};
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org554e87f" class="outline-4">
+<h4 id="org554e87f"><span class="section-number-4">1.2.4.</span> 电话号码的字母组合</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<ul class="org-ul">
+<li><p>
+<a href="https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/">电话号码的字母组合</a>
+给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。
+</p>
+
+<p>
+给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。
+</p>
+
+
+<div id="org8f8205c" class="figure">
+<p><img src="https://img-blog.csdnimg.cn/2020102916424043.png" alt="2020102916424043.png" />
+</p>
+</div>
+
+<p>
+示例: 输入：&ldquo;23&rdquo; 输出：[&ldquo;ad&rdquo;, &ldquo;ae&rdquo;, &ldquo;af&rdquo;, &ldquo;bd&rdquo;, &ldquo;be&rdquo;, &ldquo;bf&rdquo;, &ldquo;cd&rdquo;, &ldquo;ce&rdquo;, &ldquo;cf&rdquo;].
+</p>
+
+<p>
+说明：尽管上面的答案是按字典序排列的，但是你可以任意选择答案输出的顺序。
+</p></li>
+
+<li>思路
+使用 n 层循环，即可以使用回溯法</li>
+
+<li>回溯三部曲
+<ol class="org-ol">
+<li>确定回溯参数
+<ul class="org-ul">
+<li>首先需要一个字符串 s 来收集叶子节点的结果，然后用一个字符串数组 result 保存起来，这两个变量我依然定义为全局</li>
+<li>参数包括 digits,还有一个 index 表示当前是遍历的第几个数字</li>
+</ul></li>
+<li>确定终止条件
+<ul class="org-ul">
+<li>index = 输入数字的个数</li>
+</ul></li>
+
+<li>确定单层遍历逻辑
+<ul class="org-ul">
+<li>取出 index 对应的数字，并且找到对应的字符集</li>
+<li>使用 for 循环处理这个字符集</li>
+</ul></li>
+</ol></li>
+
+<li><p>
+代码
+</p>
+<div class="org-src-container">
+<pre class="src src-js">  <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">backtrackingLetterCombinations</span> = (digits = <span style="color: #99bb66;">""</span>) =&gt; {
+    <span style="color: #51afef;">const</span> <span style="color: #dcaeea;">k</span> = digits.length;
+    <span style="color: #51afef;">const</span> <span style="color: #dcaeea;">map</span> = [
+      <span style="color: #99bb66;">""</span>,
+      <span style="color: #99bb66;">""</span>,
+      <span style="color: #99bb66;">"abc"</span>,
+      <span style="color: #99bb66;">"def"</span>,
+      <span style="color: #99bb66;">"ghi"</span>,
+      <span style="color: #99bb66;">"jkl"</span>,
+      <span style="color: #99bb66;">"mno"</span>,
+      <span style="color: #99bb66;">"pqrs"</span>,
+      <span style="color: #99bb66;">"tuv"</span>,
+      <span style="color: #99bb66;">"wxyz"</span>,
+    ];
+    <span style="color: #51afef;">if</span> (!k) {
+      <span style="color: #51afef;">return</span> [];
+    }
+    <span style="color: #51afef;">const</span> <span style="color: #dcaeea;">res</span> = [],
+      path = [];
+
+    <span style="color: #51afef;">function</span> <span style="color: #c678dd;">backtracking</span>(<span style="color: #dcaeea;">n</span>, <span style="color: #dcaeea;">k</span>, <span style="color: #dcaeea;">a</span>) {
+      <span style="color: #51afef;">if</span> (path.length === k) {
+        res.push(path.join(<span style="color: #99bb66;">""</span>));
+        <span style="color: #51afef;">return</span>;
+      }
+      <span style="color: #51afef;">for</span> (<span style="color: #51afef;">const</span> <span style="color: #dcaeea;">v</span> of map[n[a]]) {
+        path.push(v);
+        <span style="color: #a9a1e1;">arguments</span>.callee(n, k, a + <span style="color: #dd8844; font-weight: bold;">1</span>);
+        path.pop();
+      }
+    }
+
+    backtracking(digits, k, <span style="color: #dd8844; font-weight: bold;">0</span>);
+
+    <span style="color: #51afef;">return</span> res;
+  };
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orga6dbf19" class="outline-4">
+<h4 id="orga6dbf19"><span class="section-number-4">1.2.5.</span> 分割回文串</h4>
+<div class="outline-text-4" id="text-1-2-5">
+<ul class="org-ul">
+<li><p>
+<a href="https://leetcode-cn.com/problems/palindrome-partitioning/">分割回文串</a>
+给定一个字符串 s，将 s 分割成一些子串，使每个子串都是回文串。
+</p>
+
+<p>
+返回 s 所有可能的分割方案。
+</p>
+
+<p>
+示例: 输入: &ldquo;aab&rdquo; 输出: [ [&ldquo;aa&rdquo;,&ldquo;b&rdquo;], [&ldquo;a&rdquo;,&ldquo;a&rdquo;,&ldquo;b&rdquo;] ]
+</p></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgbffc90e" class="outline-4">
+<h4 id="orgbffc90e"><span class="section-number-4">1.2.6.</span> 复原 IP 地址</h4>
+<div class="outline-text-4" id="text-1-2-6">
+<ul class="org-ul">
+<li><p>
+<a href="https://leetcode-cn.com/problems/restore-ip-addresses/">复原 IP 地址</a>
+给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。
+</p>
+
+<p>
+有效的 IP 地址 正好由四个整数（每个整数位于 0 到 255 之间组成，且不能含有前导 0），整数之间用 &rsquo;.&rsquo; 分隔。
+</p>
+
+<p>
+例如：&ldquo;0.1.2.201&rdquo; 和 &ldquo;192.168.1.1&rdquo; 是 有效的 IP 地址，但是 &ldquo;0.011.255.245&rdquo;、&ldquo;192.168.1.312&rdquo; 和 &ldquo;192.168@1.1&rdquo; 是 无效的 IP 地址。
+</p></li>
+
+<li>回溯三部曲
+<ol class="org-ol">
+<li>递归参数
+<ul class="org-ul">
+<li>startIndex 记录下一层递归分割的起始位置</li>
+<li>pointNum 记录添加逗号的数量</li>
+</ul></li>
+
+<li>递归终止条件
+<ul class="org-ul">
+<li>pointNum 为 3
+<ul class="org-ul">
+<li>第四段字符有效，放入 res 中</li>
+</ul></li>
+<li>pointNum 不为 3 ，直接返回</li>
+</ul></li>
+
+<li><p>
+单层搜索逻辑
+递归调用时，下一层递归的 startIndex 要从 i+2 开始（因为需要在字符串中加入了分隔符.），同时记录分割符的数量 pointNum 要 +1。
+</p>
+
+<p>
+回溯的时候，就将刚刚加入的分隔符. 删掉就可以了，pointNum 也要-1。
+</p></li>
+</ol></li>
+
+<li><p>
+代码
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #51afef;">var</span> <span style="color: #dcaeea;">restoreIpAddresses</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">s</span>) {
+  <span style="color: #51afef;">const</span> <span style="color: #dcaeea;">res</span> = [],
+    path = [];
+
+  backtracking(<span style="color: #dd8844; font-weight: bold;">0</span>);
+  <span style="color: #51afef;">return</span> res;
+
+  <span style="color: #51afef;">function</span> <span style="color: #c678dd;">backtracking</span>(<span style="color: #dcaeea;">i</span>) {
+    <span style="color: #51afef;">const</span> <span style="color: #dcaeea;">len</span> = path.length;
+    <span style="color: #51afef;">if</span> (len &gt; <span style="color: #dd8844; font-weight: bold;">4</span>) {
+      <span style="color: #51afef;">return</span>;
+    }
+    <span style="color: #51afef;">if</span> (len === <span style="color: #dd8844; font-weight: bold;">4</span> &amp;&amp; i === s.length) {
+      res.push(path.join(<span style="color: #99bb66;">"."</span>));
+      <span style="color: #51afef;">return</span>;
+    }
+    <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">j</span> = i; j &lt; s.length; ++j) {
+      <span style="color: #51afef;">const</span> <span style="color: #dcaeea;">str</span> = s.substring(i, j + <span style="color: #dd8844; font-weight: bold;">1</span>);
+      <span style="color: #51afef;">if</span> (str.length &gt; <span style="color: #dd8844; font-weight: bold;">3</span> || +str &gt; <span style="color: #dd8844; font-weight: bold;">255</span>) {
+        <span style="color: #51afef;">break</span>;
+      }
+      <span style="color: #51afef;">if</span> (str.length &gt; <span style="color: #dd8844; font-weight: bold;">1</span> &amp;&amp; str[<span style="color: #dd8844; font-weight: bold;">0</span>] === <span style="color: #99bb66;">"0"</span>) {
+        <span style="color: #51afef;">break</span>;
+      }
+      path.push(str);
+      <span style="color: #a9a1e1;">arguments</span>.callee(j + <span style="color: #dd8844; font-weight: bold;">1</span>);
+      path.pop();
+    }
+  }
+};
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3dd4cea" class="outline-3">
+<h3 id="org3dd4cea"><span class="section-number-3">1.3.</span> 贪心算法</h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+<div id="outline-container-org7b3f546" class="outline-4">
+<h4 id="org7b3f546"><span class="section-number-4">1.3.1.</span> 贪心算法理论基础</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+<b>贪心算法的本质是选择每一阶段的局部最优，从而达到全局最优</b>
+</p>
+
+<p>
+例如，有一堆钞票，你可以拿走十张，如果想达到最大的金额，你要怎么拿？
+</p>
+
+<p>
+指定每次拿最大的，最终结果就是拿走最大数额的钱。
+</p>
+
+<p>
+每次拿最大的就是局部最优，最后拿走最大数额的钱就是推出全局最优。
+</p>
+
+<ul class="org-ul">
+<li>贪心的一般接替步骤
+<ol class="org-ol">
+<li>将问题分解为若干个子问题</li>
+<li>找出适合的贪心策略</li>
+<li>求解每一个子问题的最优解</li>
+<li>将局部最优解堆叠成全局最优解</li>
+</ol></li>
+
+<li>贪心没有套路，只是常识性推导加上举反例</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1c3a864" class="outline-4">
+<h4 id="org1c3a864"><span class="section-number-4">1.3.2.</span> 分发饼干</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<ul class="org-ul">
+<li>题目
+假设你是一位很棒的家长，想要给你的孩子们一些小饼干。但是，每个孩子最多只能给一块饼干。
+对每个孩子 i，都有一个胃口值 g[i]，这是能让孩子们满足胃口的饼干的最小尺寸；并且每块饼干 j，都有一个尺寸 s[j] 。如果 s[j] &gt;= g[i]，我们可以将这个饼干 j 分配给孩子 i ，这个孩子会得到满足。你的目标是尽可能满足越多数量的孩子，并输出这个最大数值。
+
+<ul class="org-ul">
+<li>示例 1:
+<ul class="org-ul">
+<li>输入: g = [1,2,3], s = [1,1]</li>
+<li>输出: 1 解释:你有三个孩子和两块小饼干，3个孩子的胃口值分别是：1,2,3。虽然你有两块小饼干，由于他们的尺寸都是 1，你只能让胃口值是 1 的孩子满足。所以你应该输出 1。</li>
+</ul></li>
+
+<li>示例 2:
+<ul class="org-ul">
+<li>输入: g = [1,2], s = [1,2,3]</li>
+<li>输出: 2</li>
+<li>解释:你有两个孩子和三块小饼干，2个孩子的胃口值分别是 1,2。你拥有的饼干数量和尺寸都足以让所有孩子满足。所以你应该输出 2.</li>
+</ul></li>
+</ul></li>
+
+<li>思路： 大尺寸的饼干既可以满足胃口大的孩子，也可以满足胃口小的孩子，那么就应该优先满足胃口大的。
+<b>这里的局部最优就是大饼干喂给胃口大的，充分利用饼干尺寸喂饱一个，全局最优就是喂饱尽可能多的小孩</b>
+<ul class="org-ul">
+<li>可以尝试贪心策略，先将饼干数组和小孩数组排序</li>
+<li>然后从后往前遍历小孩数组，用大饼干优先满足胃口大的，并统计满足小孩数量</li>
+</ul></li>
+
+<li><p>
+代码
+</p>
+<div class="org-src-container">
+<pre class="src src-js">  <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">findContentChildren</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">g</span>, <span style="color: #dcaeea;">s</span>) {
+    g = g.sort((a, b) =&gt; a - b);
+    s = s.sort((a, b) =&gt; a - b);
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">result</span> = <span style="color: #dd8844; font-weight: bold;">0</span>,
+      index = s.length - <span style="color: #dd8844; font-weight: bold;">1</span>;
+
+    <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = g.length - <span style="color: #dd8844; font-weight: bold;">1</span>; i &gt;= <span style="color: #dd8844; font-weight: bold;">0</span>; --i) {
+      <span style="color: #51afef;">if</span> (index &gt;= <span style="color: #dd8844; font-weight: bold;">0</span> &amp;&amp; s[index] &gt;= g[i]) {
+        result++;
+        index--;
+      }
+    }
+
+    <span style="color: #51afef;">return</span> result;
+  };
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge169a60" class="outline-4">
+<h4 id="orge169a60"><span class="section-number-4">1.3.3.</span> 摆动序列</h4>
+<div class="outline-text-4" id="text-1-3-3">
+<p>
+给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
+子数组 是数组中的一个连续部分。
+</p>
+
+<ul class="org-ul">
+<li><p>
+示例 1
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  &#36755;&#20837;&#65306;<span style="color: #dcaeea;">nums</span> = <span style="color: #51afef;">[</span>-2,1,-3,4,-1,2,1,-5,4<span style="color: #51afef;">]</span>
+  &#36755;&#20986;&#65306;6
+  &#35299;&#37322;&#65306;&#36830;&#32493;&#23376;&#25968;&#32452; <span style="color: #51afef;">[</span>4,-1,2,1<span style="color: #51afef;">]</span> &#30340;&#21644;&#26368;&#22823;&#65292;&#20026; <span style="color: #dd8844; font-weight: bold;">6</span> &#12290;
+</pre>
+</div></li>
+
+<li><p>
+示例 2
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  &#36755;&#20837;&#65306;<span style="color: #dcaeea;">nums</span> = <span style="color: #51afef;">[</span><span style="color: #dd8844; font-weight: bold;">1</span><span style="color: #51afef;">]</span>
+  &#36755;&#20986;&#65306;1
+</pre>
+</div></li>
+
+<li><p>
+示例 3
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  &#36755;&#20837;&#65306;<span style="color: #dcaeea;">nums</span> = <span style="color: #51afef;">[</span>5,4,-1,7,8<span style="color: #51afef;">]</span>
+  &#36755;&#20986;&#65306;23
+</pre>
+</div></li>
+
+<li><p>
+思路： 当连续和为负数时，应该直接从下一个数重新算起
+</p>
+<ul class="org-ul">
+<li>局部最优的情况下，记录最大的连续和，从而推出全局最优</li>
+<li>从代码角度上来讲：遍历 nums，从头开始用 count 累积，如果 count 一旦加上 nums[i]变为负数，那么就应该从 nums[i+1]开始从 0 累积 count 了，因为已经变为负数的 count，只会拖累总和</li>
+<li>相当于暴力解法中不断调整最大子数组和区间的起始位置</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-js">  <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">greedyMaxForceSubArray</span> = (nums) =&gt; {
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">result</span> = -<span style="color: #a9a1e1;">Infinity</span>,
+      count = <span style="color: #dd8844; font-weight: bold;">0</span>;
+    <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = <span style="color: #dd8844; font-weight: bold;">0</span>; i &lt; nums.length; i++) {
+      count += nums[i];
+      <span style="color: #51afef;">if</span> (count &gt; result) {
+        result = count;
+      }
+      <span style="color: #51afef;">if</span> (count &lt; <span style="color: #dd8844; font-weight: bold;">0</span>) {
+        count = <span style="color: #dd8844; font-weight: bold;">0</span>;
+      }
+    }
+    <span style="color: #51afef;">return</span> result;
+  };
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org26854d5" class="outline-4">
+<h4 id="org26854d5"><span class="section-number-4">1.3.4.</span> 最大子序和</h4>
+<div class="outline-text-4" id="text-1-3-4">
+<ul class="org-ul">
+<li><p>
+<a href="https://leetcode-cn.com/problems/maximum-subarray/">最大子序和</a>
+给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
+</p>
+
+<p>
+示例: 输入: [-2,1,-3,4,-1,2,1,-5,4] 输出: 6 解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。
+</p></li>
+
+<li>思路
+这里采用贪心算法，每当一个连续的子序和为负值时，即放弃当前序列，从下一个元素重新计算连续和，再与前面的连续和比较大值</li>
+
+<li><p>
+代码
+</p>
+<div class="org-src-container">
+<pre class="src src-js">  <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">greedyMaxForceSubArray</span> = (nums) =&gt; {
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">result</span> = -<span style="color: #a9a1e1;">Infinity</span>,
+      count = <span style="color: #dd8844; font-weight: bold;">0</span>;
+    <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = <span style="color: #dd8844; font-weight: bold;">0</span>; i &lt; nums.length; i++) {
+      count += nums[i];
+      <span style="color: #51afef;">if</span> (count &gt; result) {
+        result = count;
+      }
+      <span style="color: #51afef;">if</span> (count &lt; <span style="color: #dd8844; font-weight: bold;">0</span>) {
+        count = <span style="color: #dd8844; font-weight: bold;">0</span>;
+      }
+    }
+    <span style="color: #51afef;">return</span> result;
+  };
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb4835ba" class="outline-4">
+<h4 id="orgb4835ba"><span class="section-number-4">1.3.5.</span> 买卖股票的最佳时机 II</h4>
+<div class="outline-text-4" id="text-1-3-5">
+<ul class="org-ul">
+<li><p>
+<a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/">买卖股票的最佳时机 II</a>
+给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。
+</p>
+
+<p>
+设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。
+</p>
+
+<p>
+注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。
+</p>
+
+<ul class="org-ul">
+<li><p>
+示例 1:
+</p>
+
+<p>
+输入: [7,1,5,3,6,4]
+输出: 7
+解释: 在第 2 天（股票价格 = 1）的时候买入，在第 3 天（股票价格 = 5）的时候卖出, 这笔交易所能获得利润 = 5-1 = 4。随后，在第 4 天（股票价格 = 3）的时候买入，在第 5 天（股票价格 = 6）的时候卖出, 这笔交易所能获得利润 = 6-3 = 3 。
+</p></li>
+
+<li><p>
+示例 2:
+</p>
+
+<p>
+输入: [1,2,3,4,5]
+输出: 4
+解释: 在第 1 天（股票价格 = 1）的时候买入，在第 5 天 （股票价格 = 5）的时候卖出, 这笔交易所能获得利润 = 5-1 = 4 。注意你不能在第 1 天和第 2 天接连购买股票，之后再将它们卖出。因为这样属于同时参与了多笔交易，你必须在再次购买前出售掉之前的股票。
+</p></li>
+
+<li><p>
+示例 3:
+</p>
+
+<p>
+输入: [7,6,4,3,1]
+输出: 0
+解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。
+</p></li>
+
+<li>思路
+使用贪心算法，即把每两天为升值的加入结果到中</li>
+
+<li><p>
+代码
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">maxProfit</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">prices</span>) {
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">result</span> = <span style="color: #dd8844; font-weight: bold;">0</span>;
+    <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = <span style="color: #dd8844; font-weight: bold;">1</span>; i &lt; prices.length; ++i) {
+        result += Math.max(prices[i] - prices[i - <span style="color: #dd8844; font-weight: bold;">1</span>], <span style="color: #dd8844; font-weight: bold;">0</span>);
+    }
+    <span style="color: #51afef;">return</span> result;
+    };
+</pre>
+</div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orga1d2ae8" class="outline-4">
+<h4 id="orga1d2ae8"><span class="section-number-4">1.3.6.</span> 跳跃游戏</h4>
+<div class="outline-text-4" id="text-1-3-6">
+<ul class="org-ul">
+<li><p>
+<a href="https://leetcode-cn.com/problems/jump-game/">跳跃游戏</a>
+给定一个非负整数数组，你最初位于数组的第一个位置。
+</p>
+
+<p>
+数组中的每个元素代表你在该位置可以跳跃的最大长度。
+</p>
+
+<p>
+判断你是否能够到达最后一个位置。
+</p>
+
+<ul class="org-ul">
+<li><p>
+示例 1:
+</p>
+
+<p>
+输入: [2,3,1,1,4]
+输出: true
+解释: 我们可以先跳 1 步，从位置 0 到达 位置 1, 然后再从位置 1 跳 3 步到达最后一个位置。
+</p></li>
+
+<li><p>
+示例 2:
+</p>
+
+<p>
+输入: [3,2,1,0,4]
+输出: false
+解释: 无论怎样，你总会到达索引为 3 的位置。但该位置的最大跳跃长度是 0 ， 所以你永远不可能到达最后一个位置
+</p></li>
+</ul></li>
+
+<li>思路
+贪心算法局部最优解：每次取最大跳跃步数（取最大覆盖范围），整体最优解：最后得到整体最大覆盖范围，看是否能到终点。</li>
+
+<li><p>
+代码
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">canJump</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">nums</span>) {
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">range</span> = <span style="color: #dd8844; font-weight: bold;">0</span>;
+
+    <span style="color: #51afef;">if</span> (nums.length === <span style="color: #dd8844; font-weight: bold;">1</span>) {
+        <span style="color: #51afef;">return</span> <span style="color: #a9a1e1;">true</span>;
+    }
+    <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = <span style="color: #dd8844; font-weight: bold;">0</span>; i &lt;= range; ++i) {
+        range = Math.max(i + nums[i], range);
+        <span style="color: #51afef;">if</span> (range &gt;= nums.length - <span style="color: #dd8844; font-weight: bold;">1</span>) {
+        <span style="color: #51afef;">return</span> <span style="color: #a9a1e1;">true</span>;
+        }
+    }
+
+    <span style="color: #51afef;">return</span> <span style="color: #a9a1e1;">false</span>;
+    };
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcc5237f" class="outline-4">
+<h4 id="orgcc5237f"><span class="section-number-4">1.3.7.</span> 跳跃游戏 II</h4>
+<div class="outline-text-4" id="text-1-3-7">
+<ul class="org-ul">
+<li><p>
+<a href="https://leetcode-cn.com/problems/jump-game-ii/">跳跃游戏 II</a>
+给定一个非负整数数组，你最初位于数组的第一个位置。
+</p>
+
+<p>
+数组中的每个元素代表你在该位置可以跳跃的最大长度。
+</p>
+
+<p>
+你的目标是使用最少的跳跃次数到达数组的最后一个位置。
+</p></li>
+
+<li><p>
+示例:
+</p>
+
+<p>
+输入: [2,3,1,1,4]
+输出: 2
+解释: 跳到最后一个位置的最小跳跃数是 2。从下标为 0 跳到下标为 1 的位置，跳 1 步，然后跳 3 步到达数组的最后一个位置。
+</p></li>
+</ul>
+
+<p>
+说明: 假设你总是可以到达数组的最后一个位置
+</p>
+
+<ul class="org-ul">
+<li>思路</li>
+<li><p>
+代码
+</p>
+<div class="org-src-container">
+<pre class="src src-js">  <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">jump</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">nums</span>) {
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">curIndex</span> = <span style="color: #dd8844; font-weight: bold;">0</span>,
+        nextIndex = <span style="color: #dd8844; font-weight: bold;">0</span>,
+        steps = <span style="color: #dd8844; font-weight: bold;">0</span>;
+    <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = <span style="color: #dd8844; font-weight: bold;">0</span>; i &lt; nums.length - <span style="color: #dd8844; font-weight: bold;">1</span>; ++i) {
+        nextIndex = Math.max(nums[i] + i, nextIndex);
+        <span style="color: #51afef;">if</span> (i === curIndex) {
+        curIndex = nextIndex;
+        steps++;
+        }
+    }
+    <span style="color: #51afef;">return</span> steps;
+  };
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2a8f37a" class="outline-4">
+<h4 id="org2a8f37a"><span class="section-number-4">1.3.8.</span> k 次取反后最大化的数组和</h4>
+<div class="outline-text-4" id="text-1-3-8">
+<ul class="org-ul">
+<li><p>
+<a href="https://leetcode-cn.com/problems/maximize-sum-of-array-after-k-negations/">k 次取反后最大化的数组和</a>
+给定一个整数数组 A，我们只能用以下方法修改该数组：我们选择某个索引 i 并将 A[i] 替换为 -A[i]，然后总共重复这个过程 K 次。（我们可以多次选择同一个索引 i。）
+</p>
+
+<p>
+以这种方式修改数组后，返回数组可能的最大和。
+</p>
+
+<p>
+示例 1：
+</p>
+
+<p>
+输入：A = [4,2,3], K = 1
+输出：5
+解释：选择索引 (1,) ，然后 A 变为 [4,-2,3]。
+</p>
+
+<p>
+示例 2：
+</p>
+
+<p>
+输入：A = [3,-1,0,2], K = 3
+输出：6
+解释：选择索引 (1, 2, 2) ，然后 A 变为 [3,1,0,2]。
+</p>
+
+<p>
+示例 3：
+</p>
+
+<p>
+输入：A = [2,-3,-1,5,-4], K = 2
+输出：13
+解释：选择索引 (1, 4) ，然后 A 变为 [2,3,-1,5,4]。
+</p></li>
+
+<li><p>
+思路
+贪心的思路，局部最优：让绝对值大的负数变为正数，当前数值达到最大，整体最优：整个数组和达到最大。
+</p>
+
+<p>
+局部最优可以推出全局最优。
+</p>
+
+<p>
+那么如果将负数都转变为正数了，K依然大于 0，此时的问题是一个有序正整数序列，如何转变 K 次正负，让 数组和 达到最大。
+</p>
+
+<p>
+那么又是一个贪心：局部最优：只找数值最小的正整数进行反转，当前数值可以达到最大（例如正整数数组{5, 3, 1}，反转 1 得到-1 比 反转 5 得到的-5 大多了），全局最优：整个 数组和 达到最大。
+</p></li>
+
+<li><p>
+代码
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #51afef;">var</span> <span style="color: #dcaeea;">largestSumAfterKNegations</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">nums</span>, <span style="color: #dcaeea;">k</span>) {
+  nums.sort((a, b) =&gt; {
+    <span style="color: #51afef;">return</span> Math.abs(b) - Math.abs(a);
+  });
+  <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = <span style="color: #dd8844; font-weight: bold;">0</span>; i &lt; nums.length; i++) {
+    <span style="color: #51afef;">if</span> (nums[i] &lt; <span style="color: #dd8844; font-weight: bold;">0</span> &amp;&amp; k &gt; <span style="color: #dd8844; font-weight: bold;">0</span>) {
+      nums[i] *= -<span style="color: #dd8844; font-weight: bold;">1</span>;
+      --k;
+    }
+  }
+
+  <span style="color: #51afef;">if</span> (k &gt; <span style="color: #dd8844; font-weight: bold;">0</span> &amp;&amp; k % <span style="color: #dd8844; font-weight: bold;">2</span> === <span style="color: #dd8844; font-weight: bold;">1</span>) {
+    nums[nums.length - <span style="color: #dd8844; font-weight: bold;">1</span>] *= <span style="color: #dd8844; font-weight: bold;">1</span>;
+  }
+  k = <span style="color: #dd8844; font-weight: bold;">0</span>;
+
+  <span style="color: #51afef;">return</span> nums.reduce((a, b) =&gt; a + b);
+};
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orge3d6714" class="outline-3">
+<h3 id="orge3d6714"><span class="section-number-3">1.4.</span> 动态规划</h3>
+<div class="outline-text-3" id="text-1-4">
+</div>
+<div id="outline-container-org3ed3193" class="outline-4">
+<h4 id="org3ed3193"><span class="section-number-4">1.4.1.</span> 动态规划理论基础</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<ul class="org-ul">
+<li><p>
+概念: 动态规划 (Dynamic Programming. DP)，如果某一问题有很多重叠子问题，使用动态规划是最有效的
+</p>
+
+<p>
+所以动态规划中每一个状态一定是上一个状态推导出来的，这是与贪心算法的本质区别，贪心没有状态推导，而是局部最优选最优的
+</p>
+
+<p>
+例如：有 N 个物品和一个最多能背重量为 W 的背包，第 i 件物品的重量是 weight[i]，得到的价值是 value[i]，并且每件物品只能用一次，求解将哪些物品装入背包里物品价值总和最大？
+</p>
+
+<p>
+动态规划中 dp[i] 是由 dp[j-weight[i]] 推导出来的，然后取 <code>max(dp[j], dp[j-weight[i]]+value[i])</code>
+</p>
+
+<p>
+但是如果是贪心算法，则是每次拿物品选个最大的或者最小的就可以了，与上一个状态无关
+</p>
+
+<p>
+所以贪心解决不了动态规划的问题
+</p>
+
+<p>
+<b>动态规划是前一个状态推导出来的，贪心是局部最优选最优</b>
+</p></li>
+
+<li>解题步骤
+<ol class="org-ol">
+<li>确定 dp 数组 (dp table) 以及下标的含义</li>
+<li>确定递推公式</li>
+<li>dp 数组如何初始化</li>
+<li>确定遍历顺序</li>
+<li>举例推导 dp 数组</li>
+</ol></li>
+
+<li>动态规划如何 debug
+<ul class="org-ul">
+<li>找问题的最好方式就是把 dp 数组打印出来</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4051bc5" class="outline-4">
+<h4 id="org4051bc5"><span class="section-number-4">1.4.2.</span> 斐波拉数列</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<p>
+斐波那契数，通常用 F(n) 表示，形成的序列称为 斐波那契数列 。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。也就是： F(0) = 0，F(1) = 1 F(n) = F(n - 1) + F(n - 2)，其中 n &gt; 1 给你 n ，请计算 F(n) 。
+</p>
+
+<p>
+示例 1： 输入：2 输出：1 解释：F(2) = F(1) + F(0) = 1 + 0 = 1
+</p>
+
+<p>
+示例 2： 输入：3 输出：2 解释：F(3) = F(2) + F(1) = 1 + 1 = 2
+</p>
+
+<p>
+示例 3： 输入：4 输出：3 解释：F(4) = F(3) + F(2) = 2 + 1 = 3
+</p>
+
+<ul class="org-ul">
+<li>DP 五步曲
+<ol class="org-ol">
+<li>确定 dp 数组以及下标的含义
+dp[i] 定义为：第 i 个数的斐波那契数值是 dp[i]</li>
+<li>确定递推公式
+<code>dp[i] = dp[i-1] + dp[i-2]</code></li>
+<li>dp 数组如何初始化
+dp[0] = 0
+dp[1] = 1</li>
+<li>确定遍历顺序
+从递推公式 <code>dp[i] = dp[i-1] + dp[i-2]</code> 可以看出，dp[i] 依赖于 dp[i-1] 和 dp[i-2] ，所以遍历顺序是从前往后</li>
+<li>举例推导 dp 数组
+当 N 为 10 时，dp 数组如下：
+0 1 1 2 3 5 8 13 21 34 55</li>
+</ol></li>
+
+<li><p>
+代码
+</p>
+<div class="org-src-container">
+<pre class="src src-js">  <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">fib</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">n</span>) {
+    <span style="color: #51afef;">if</span> (n &lt;= <span style="color: #dd8844; font-weight: bold;">1</span>) {
+      <span style="color: #51afef;">return</span> n;
+    }
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">dp</span> = [<span style="color: #dd8844; font-weight: bold;">0</span>, <span style="color: #dd8844; font-weight: bold;">1</span>],
+      sum = <span style="color: #dd8844; font-weight: bold;">0</span>;
+    <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = <span style="color: #dd8844; font-weight: bold;">2</span>; i &lt;= n; ++i) {
+      <span style="color: #525252;">// </span><span style="color: #525252;">[dp[0], dp[1]] = [dp[1], dp[0] + dp[1]];</span>
+      sum = dp[<span style="color: #dd8844; font-weight: bold;">0</span>] + dp[<span style="color: #dd8844; font-weight: bold;">1</span>];
+      dp[<span style="color: #dd8844; font-weight: bold;">0</span>] = dp[<span style="color: #dd8844; font-weight: bold;">1</span>];
+      dp[<span style="color: #dd8844; font-weight: bold;">1</span>] = sum;
+    }
+    <span style="color: #51afef;">return</span> dp[<span style="color: #dd8844; font-weight: bold;">1</span>];
+  };
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9daf327" class="outline-4">
+<h4 id="org9daf327"><span class="section-number-4">1.4.3.</span> 爬楼梯</h4>
+<div class="outline-text-4" id="text-1-4-3">
+<ul class="org-ul">
+<li><p>
+<a href="https://leetcode-cn.com/problems/climbing-stairs/">爬楼梯</a>
+</p>
+
+<p>
+假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
+</p>
+
+<p>
+每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
+</p>
+
+<p>
+注意：给定 n 是一个正整数。
+</p>
+
+<p>
+示例 1： 输入： 2 输出： 2 解释： 有两种方法可以爬到楼顶。
+</p>
+
+<p>
+1 阶 + 1 阶
+2 阶
+</p>
+
+<p>
+示例 2： 输入： 3 输出： 3 解释： 有三种方法可以爬到楼顶。
+</p>
+
+<p>
+1 阶 + 1 阶 + 1 阶
+1 阶 + 2 阶
+2 阶 + 1 阶
+</p></li>
+
+<li><p>
+思路
+爬到第一层楼梯有一种方法，爬到二层楼梯有两种方法。
+</p>
+
+<p>
+那么第一层楼梯再跨两步就到第三层 ，第二层楼梯再跨一步就到第三层。
+</p>
+
+<p>
+所以到第三层楼梯的状态可以由第二层楼梯 和 到第一层楼梯状态推导出来，那么就可以想到动态规划了。
+</p></li>
+
+<li>DP 五步曲
+<ol class="org-ol">
+<li>确定 dp 数组以及下标的含义
+dp[i]: 爬到第 i 层楼梯，有 dp[i] 种方法</li>
+<li>确定递推公式
+dp[i] 有两个方向可以推出来：
+<ol class="org-ol">
+<li>dp[i-1]，上 i-1 层楼梯，有 dp[i-1] 种方法，那么再往上跳一级台阶就是 dp[i]</li>
+<li>dp[i-1]，上 i-2 层楼梯，有 dp[i-2] 种方法，那么再往上跳两级台阶就是 dp[i]</li>
+<li>所以 d[i] = dp[i-1] + dp[i-2]</li>
+</ol></li>
+<li>dp 数组如何初始化
+dp[i] 的定义是爬到第 i 层楼梯，有 dp[i] 种方法
+dp[1] = 1, dp[2] = 2</li>
+<li>确定遍历顺序
+从前往后</li>
+<li>举例推导
+例如当 n 为 5 的时候，dp 为 1 2 3 5 8 (dp 下标从 1 开始)</li>
+</ol></li>
+
+<li><p>
+代码
+</p>
+<div class="org-src-container">
+<pre class="src src-js">  <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">climbStairs</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">n</span>) {
+    <span style="color: #51afef;">if</span> (n &lt;= <span style="color: #dd8844; font-weight: bold;">1</span>) {
+      <span style="color: #51afef;">return</span> n;
+    }
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">dp</span> = [<span style="color: #dd8844; font-weight: bold;">1</span>, <span style="color: #dd8844; font-weight: bold;">1</span>],
+      sum = <span style="color: #dd8844; font-weight: bold;">0</span>;
+    <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = <span style="color: #dd8844; font-weight: bold;">2</span>; i &lt;= n; ++i) {
+      sum = dp[<span style="color: #dd8844; font-weight: bold;">0</span>] + dp[<span style="color: #dd8844; font-weight: bold;">1</span>];
+      dp[<span style="color: #dd8844; font-weight: bold;">0</span>] = dp[<span style="color: #dd8844; font-weight: bold;">1</span>];
+      dp[<span style="color: #dd8844; font-weight: bold;">1</span>] = sum;
+    }
+    <span style="color: #51afef;">return</span> dp[<span style="color: #dd8844; font-weight: bold;">1</span>];
+  };
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfbb362d" class="outline-4">
+<h4 id="orgfbb362d"><span class="section-number-4">1.4.4.</span> 使用最小花费爬楼梯</h4>
+<div class="outline-text-4" id="text-1-4-4">
+<ul class="org-ul">
+<li><p>
+<a href="https://leetcode-cn.com/problems/min-cost-climbing-stairs/">使用最小花费爬楼梯</a>
+</p>
+
+<p>
+数组的每个下标作为一个阶梯，第 i 个阶梯对应着一个非负数的体力花费值 cost[i]（下标从 0 开始）。
+</p>
+
+<p>
+每当你爬上一个阶梯你都要花费对应的体力值，一旦支付了相应的体力值，你就可以选择向上爬一个阶梯或者爬两个阶梯。
+</p>
+
+<p>
+请你找出达到楼层顶部的最低花费。在开始时，你可以选择从下标为 0 或 1 的元素作为初始阶梯。
+</p>
+
+<p>
+示例 1：
+</p>
+
+<p>
+输入：cost = [10, 15, 20] 输出：15 解释：最低花费是从 cost[1] 开始，然后走两步即可到阶梯顶，一共花费 15 。  示例 2：
+</p>
+
+<p>
+输入：cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1] 输出：6 解释：最低花费方式是从 cost[0] 开始，逐个经过那些 1 ，跳过 cost[3] ，一共花费 6 。
+</p>
+
+<p>
+提示：
+</p>
+
+<p>
+cost 的长度范围是 [2, 1000]。
+cost[i] 将会是一个整型数据，范围为 [0, 999] 。
+</p></li>
+
+<li>DP 五步曲
+<ol class="org-ol">
+<li>确定 dp 数组以及下标的含义
+dp[i]: 爬到第 i 层楼梯，最小花费为 dp[i]</li>
+<li>确定递推公式
+dp[i] 有两个方向可以推出来：
+<ol class="org-ol">
+<li>dp[i-1]，上 i-1 层楼梯的最小花费为 dp[i-1]，那么再往上跳一级台阶就是的花费为 dp[i-1]</li>
+<li>dp[i-2]，上 i-2 层楼梯的最小花费为 dp[i-2] ，那么再往上跳两级台阶就是 dp[i-2] + cost[i]</li>
+<li>所以 <code>dp[i] = Math.min(dp[i-1], dp[i-2]) + cost[i]</code></li>
+</ol></li>
+<li>dp 数组如何初始化
+<code>dp[0] = cost[0], dp[1] = cost[1], dp[2] = Math.min(dp[1], dp[0]) + cost[2]</code></li>
+<li>确定遍历顺序
+从前往后</li>
+<li>举例推导
+<ul class="org-ul">
+<li>当 cost = [10, 15, 20]
+<ol class="org-ol">
+<li>dp[0] = 10</li>
+<li>dp[1] = 15</li>
+<li>dp[2] = Math.min(dp[1], dp[0]) + cost[2] = Math.min(15, 10) + 20 = 25</li>
+</ol></li>
+<li>当 cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]
+<ol class="org-ol">
+<li>dp[0] = 1</li>
+<li>dp[1] = 100</li>
+<li>dp[2] = Math.min(dp[1], dp[0]) + cost[2] = Math.min(100, 1) + 1=2</li>
+<li>dp[3] = Math.min(dp[2], dp[1]) + cost[3] = Math.min(2, 100) + 1=3</li>
+<li>dp[4] = Math.min(dp[3], dp[2]) + cost[4] = Math.min(3, 2) + 1=3</li>
+<li>dp[5] = Math.min(dp[4], dp[3]) + cost[5] = Math.min(3, 3) + 100=103</li>
+<li>dp[6] = Math.min(dp[5], dp[4]) + cost[6] = Math.min(103, 3) + 1=4</li>
+<li>dp[7] = Math.min(dp[6], dp[5]) + cost[7] = Math.min(4, 103) + 1=5</li>
+<li>dp[8] = Math.min(dp[7], dp[6]) + cost[7] = Math.min(5, 4) + 100=104</li>
+<li>dp[9] = Math.min(dp[8], dp[7]) + cost[9] = Math.min(104, 5) + 1=6</li>
+</ol></li>
+</ul></li>
+</ol></li>
+
+<li><p>
+代码
+</p>
+<div class="org-src-container">
+<pre class="src src-js">  <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">minCostClimbingStairs</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">cost</span>) {
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">dp</span> = [cost[<span style="color: #dd8844; font-weight: bold;">0</span>], cost[<span style="color: #dd8844; font-weight: bold;">1</span>]],
+      dpMin = <span style="color: #dd8844; font-weight: bold;">0</span>;
+    <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = <span style="color: #dd8844; font-weight: bold;">2</span>; i &lt; cost.length; ++i) {
+      dpMin = Math.min(dp[<span style="color: #dd8844; font-weight: bold;">0</span>], dp[<span style="color: #dd8844; font-weight: bold;">1</span>]) + cost[i];
+      dp[<span style="color: #dd8844; font-weight: bold;">0</span>] = dp[<span style="color: #dd8844; font-weight: bold;">1</span>];
+      dp[<span style="color: #dd8844; font-weight: bold;">1</span>] = dpMin;
+    }
+
+    <span style="color: #51afef;">return</span> Math.min(dp[<span style="color: #dd8844; font-weight: bold;">0</span>], dp[<span style="color: #dd8844; font-weight: bold;">1</span>]);
+  };
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0d59076" class="outline-4">
+<h4 id="org0d59076"><span class="section-number-4">1.4.5.</span> 动态规划周总结</h4>
+</div>
+<div id="outline-container-org8b87d63" class="outline-4">
+<h4 id="org8b87d63"><span class="section-number-4">1.4.6.</span> 不同路径</h4>
+<div class="outline-text-4" id="text-1-4-6">
+<ul class="org-ul">
+<li><p>
+<a href="https://leetcode-cn.com/problems/unique-paths/">不同路径</a>
+</p>
+
+<p>
+一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为 “Start” ）。
+</p>
+
+<p>
+机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish” ）。
+</p>
+
+<p>
+问总共有多少条不同的路径？
+</p>
+
+<p>
+示例 1：
+  <img src="https://img-blog.csdnimg.cn/20210110174033215.png" alt="20210110174033215.png" />
+</p>
+
+<p>
+输入：m = 3, n = 7 输出：28
+</p>
+
+<p>
+示例 2： 输入：m = 2, n = 3 输出：3 解释： 从左上角开始，总共有 3 条路径可以到达右下角。
+</p>
+
+<p>
+向右 -&gt; 向右 -&gt; 向下
+向右 -&gt; 向下 -&gt; 向右
+向下 -&gt; 向右 -&gt; 向右
+</p>
+
+<p>
+示例 3： 输入：m = 7, n = 3 输出：28
+</p>
+
+<p>
+示例 4： 输入：m = 3, n = 3 输出：6
+</p>
+
+<p>
+提示：
+</p>
+
+<p>
+1 &lt;= m, n &lt;= 100
+题目数据保证答案小于等于 2 * 10<sup>9</sup>
+</p></li>
+
+<li>DP 五步曲
+<ol class="org-ol">
+<li>确定 dp 数组以及下标的含义
+dp[i][j]: 从左上角到第 ixj 的右下角有 dp[i][j] 条不同路径</li>
+<li>确定递推公式
+dp[i][j] 有两个方向可以推出来：
+<ol class="org-ol">
+<li>dp[i][j-1]，从左边往最后一个走</li>
+<li>dp[i-1][j] ，从上面往最后一个走</li>
+<li>所以 <code>dp[i][j] = dp[i][j-1] + dp[i-1][j]</code></li>
+</ol></li>
+<li>dp 数组如何初始化
+dp 数组第一行全部为 1,第一列也全部为 1</li>
+<li>确定遍历顺序
+<ul class="org-ul">
+<li>从前往后</li>
+<li>从上往下</li>
+</ul></li>
+<li>举例推导
+<ol class="org-ol">
+<li><p>
+m = 2, n = 3
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>
+m = 3, n = 7
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+<td class="org-right">4</td>
+<td class="org-right">5</td>
+<td class="org-right">6</td>
+<td class="org-right">7</td>
+</tr>
+
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">3</td>
+<td class="org-right">6</td>
+<td class="org-right">10</td>
+<td class="org-right">15</td>
+<td class="org-right">21</td>
+<td class="org-right">28</td>
+</tr>
+</tbody>
+</table></li>
+</ol></li>
+</ol></li>
+
+<li><p>
+代码
+</p>
+<div class="org-src-container">
+<pre class="src src-js">  <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">uniquePaths</span> = <span style="color: #51afef;">function</span> (<span style="color: #dcaeea;">m</span>, <span style="color: #dcaeea;">n</span>) {
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">dp</span> = <span style="color: #51afef;">new</span> <span style="color: #ECBE7B;">Array</span>(m);
+
+    <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = <span style="color: #dd8844; font-weight: bold;">0</span>; i &lt; m; i++) {
+      <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">arr</span> = <span style="color: #51afef;">new</span> <span style="color: #ECBE7B;">Array</span>(n);
+      <span style="color: #51afef;">if</span> (i === <span style="color: #dd8844; font-weight: bold;">0</span>) {
+        arr.fill(<span style="color: #dd8844; font-weight: bold;">1</span>);
+      }
+      arr[<span style="color: #dd8844; font-weight: bold;">0</span>] = <span style="color: #dd8844; font-weight: bold;">1</span>;
+      dp[i] = arr;
+    }
+    <span style="color: #51afef;">if</span> (m &lt;= <span style="color: #dd8844; font-weight: bold;">1</span> || n &lt;= <span style="color: #dd8844; font-weight: bold;">1</span>) {
+      <span style="color: #51afef;">return</span> <span style="color: #dd8844; font-weight: bold;">1</span>;
+    }
+
+    <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = <span style="color: #dd8844; font-weight: bold;">1</span>; i &lt; m; i++) {
+      <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">j</span> = <span style="color: #dd8844; font-weight: bold;">1</span>; j &lt; n; j++) {
+        dp[i][j] = dp[i][j - <span style="color: #dd8844; font-weight: bold;">1</span>] + dp[i - <span style="color: #dd8844; font-weight: bold;">1</span>][j];
+      }
+    }
+
+    <span style="color: #51afef;">return</span> dp[m - <span style="color: #dd8844; font-weight: bold;">1</span>][n - <span style="color: #dd8844; font-weight: bold;">1</span>];
+  };
+</pre>
+</div></li>
+
+<li><p>
+数论方法
+m &times; n 无论怎么走，都需要 m + n - 2 步
+</p>
+
+<p>
+而在这 m + n -2 步中，一定要有 m - 1 步是要往下走的，所以这显然是一个组合问题
+</p>
+
+<p>
+即从 m + n - 2 中随便取 m - 1 个数，
+</p>
+
+<p>
+显然答案为：  \(C^{m-1}_{m+n-2}\)
+</p>
+
+<p>
+但是,在求解组合时，应当防止两个整数相乘溢出，所以不能把算式的分子直接算出来，需要一边与分母做除法
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js">  <span style="color: #525252;">// </span><span style="color: #525252;">&#25968;&#35770;&#26041;&#27861;</span>
+  <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">ntUniquePath</span> = (m, n) =&gt; {
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">count</span> = m - <span style="color: #dd8844; font-weight: bold;">1</span>,
+      t = m + n - <span style="color: #dd8844; font-weight: bold;">2</span>,
+      numerator = <span style="color: #dd8844; font-weight: bold;">1</span>,
+      denominator = m - <span style="color: #dd8844; font-weight: bold;">1</span>;
+
+    <span style="color: #51afef;">while</span> (count--) {
+      numerator *= t--;
+      <span style="color: #51afef;">while</span> (denominator !== <span style="color: #dd8844; font-weight: bold;">0</span> &amp;&amp; numerator % denominator === <span style="color: #dd8844; font-weight: bold;">0</span>) {
+        numerator /= denominator;
+        denominator--;
+      }
+    }
+    <span style="color: #51afef;">return</span> numerator;
+  };
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0459d8d" class="outline-4">
+<h4 id="org0459d8d"><span class="section-number-4">1.4.7.</span> 不同路径</h4>
+<div class="outline-text-4" id="text-1-4-7">
+<ul class="org-ul">
+<li>思路
+相较于上一道题，这里多的是障碍，当机器人遇到障碍时，这里 dp 置为 0,初始化时也是如此</li>
+
+<li><p>
+代码
+</p>
+<div class="org-src-container">
+<pre class="src src-js">  <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">dpUniquePaths</span> = (obstacleGrid = [[]]) =&gt; {
+    <span style="color: #51afef;">const</span> <span style="color: #dcaeea;">m</span> = obstacleGrid.length,
+      n = obstacleGrid[<span style="color: #dd8844; font-weight: bold;">0</span>].length;
+    <span style="color: #525252;">// </span><span style="color: #525252;">&#21021;&#22987;&#21270; dp &#25968;&#32452;&#20026; 0</span>
+    <span style="color: #51afef;">const</span> <span style="color: #dcaeea;">dp</span> = <span style="color: #51afef;">new</span> <span style="color: #ECBE7B;">Array</span>(m).fill().map((item) =&gt; <span style="color: #51afef;">new</span> <span style="color: #ECBE7B;">Array</span>(n).fill(<span style="color: #dd8844; font-weight: bold;">0</span>));
+
+    <span style="color: #525252;">// </span><span style="color: #525252;">&#23558;&#31532;&#19968;&#21015;&#36935;&#21040;&#38556;&#30861;&#20043;&#21069;&#30340;&#32622;&#20026; 1</span>
+    <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = <span style="color: #dd8844; font-weight: bold;">0</span>; i &lt; m &amp;&amp; obstacleGrid[i][<span style="color: #dd8844; font-weight: bold;">0</span>] === <span style="color: #dd8844; font-weight: bold;">0</span>; ++i) {
+      dp[i][<span style="color: #dd8844; font-weight: bold;">0</span>] = <span style="color: #dd8844; font-weight: bold;">1</span>;
+    }
+
+    <span style="color: #525252;">// </span><span style="color: #525252;">&#23558;&#31532;&#19968;&#34892;&#36935;&#21040;&#38556;&#30861;&#20043;&#21069;&#30340;&#32622;&#20026; 1</span>
+    <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = <span style="color: #dd8844; font-weight: bold;">0</span>; i &lt; n &amp;&amp; obstacleGrid[<span style="color: #dd8844; font-weight: bold;">0</span>][i] === <span style="color: #dd8844; font-weight: bold;">0</span>; ++i) {
+      dp[<span style="color: #dd8844; font-weight: bold;">0</span>][i] = <span style="color: #dd8844; font-weight: bold;">1</span>;
+    }
+
+    <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = <span style="color: #dd8844; font-weight: bold;">1</span>; i &lt; m; ++i) {
+      <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">j</span> = <span style="color: #dd8844; font-weight: bold;">1</span>; j &lt; n; ++j) {
+        <span style="color: #525252;">// </span><span style="color: #525252;">&#36935;&#21040;&#38556;&#30861;&#32622;&#20026; 0</span>
+        dp[i][j] = obstacleGrid[i][j] === <span style="color: #dd8844; font-weight: bold;">1</span> ? <span style="color: #dd8844; font-weight: bold;">0</span> : dp[i - <span style="color: #dd8844; font-weight: bold;">1</span>][j] + dp[i][j - <span style="color: #dd8844; font-weight: bold;">1</span>];
+      }
+    }
+
+    <span style="color: #51afef;">return</span> dp[m - <span style="color: #dd8844; font-weight: bold;">1</span>][n - <span style="color: #dd8844; font-weight: bold;">1</span>];
+  };
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3403faa" class="outline-4">
+<h4 id="org3403faa"><span class="section-number-4">1.4.8.</span> 整数拆分</h4>
+<div class="outline-text-4" id="text-1-4-8">
+<ul class="org-ul">
+<li><p>
+<a href="https://leetcode-cn.com/problems/integer-break/">整数拆分</a>
+给定一个正整数 n，将其拆分为至少两个正整数的和，并使这些整数的乘积最大化。 返回你可以获得的最大乘积。
+</p>
+
+<p>
+示例 1: 输入: 2 输出: 1
+</p>
+
+<p>
+解释: 2 = 1 + 1, 1 × 1 = 1。
+</p>
+
+<p>
+示例 2: 输入: 10 输出: 36 解释: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36。
+</p>
+
+<p>
+说明: 你可以假设 n 不小于 2 且不大于 58。
+</p></li>
+
+<li>DP 五步曲
+<ul class="org-ul">
+<li>确定 dp 数组及下标含义
+<ul class="org-ul">
+<li>dp[i]: 拆分数字 i 可以得到的最大乘积 dp[i]</li>
+</ul></li>
+<li>确定递推公式
+有两种渠道可以得到 dp[i]
+<ol class="org-ol">
+<li>j &times; (i-j)</li>
+<li>j &times; dp[i-j]</li>
+<li>还需要和 dp[i] 比较</li>
+<li>dp[i] = Math.max(dp[i], (i-j)&times; j, dp[i-j]&times; j)</li>
+</ol></li>
+<li>dp 的初始化
+只用初始化 dp[2]=1, dp[0], dp[1] 无意义</li>
+<li>确定遍历顺序
+<ul class="org-ul">
+<li>遍历 i 是从前往后一直到 n</li>
+<li>遍历 j 从 1 开始，一直到 I</li>
+</ul></li>
+<li>举例推导 dp 数组
+<ul class="org-ul">
+<li><p>
+n=10
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+<td class="org-right">4</td>
+<td class="org-right">5</td>
+<td class="org-right">6</td>
+<td class="org-right">7</td>
+<td class="org-right">8</td>
+<td class="org-right">9</td>
+<td class="org-right">10</td>
+</tr>
+
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">4</td>
+<td class="org-right">6</td>
+<td class="org-right">9</td>
+<td class="org-right">12</td>
+<td class="org-right">18</td>
+<td class="org-right">27</td>
+<td class="org-right">36</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+</ul></li>
+
+<li><p>
+代码
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">dpIntegerBreak</span> = (n) =&gt; {
+      <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">dp</span> = <span style="color: #51afef;">new</span> <span style="color: #ECBE7B;">Array</span>(n + <span style="color: #dd8844; font-weight: bold;">1</span>).fill(<span style="color: #dd8844; font-weight: bold;">0</span>);
+      dp[<span style="color: #dd8844; font-weight: bold;">2</span>] = <span style="color: #dd8844; font-weight: bold;">1</span>;
+      <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = <span style="color: #dd8844; font-weight: bold;">3</span>; i &lt;= n; ++i) {
+        <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">j</span> = <span style="color: #dd8844; font-weight: bold;">1</span>; j &lt; i - <span style="color: #dd8844; font-weight: bold;">1</span>; ++j) {
+          <span style="color: #525252;">// </span><span style="color: #525252;">dp[i] = Math.max(dp[i], Math.max((i - j) * j, dp[i - j] * j));</span>
+          dp[i] = Math.max(dp[i], (i - j) * j, dp[i - j] * j);
+        }
+      }
+      <span style="color: #51afef;">return</span> dp[n];
+    };
+</pre>
+</div></li>
+
+<li>数学方法
+<ul class="org-ul">
+<li><p>
+结论
+</p>
+\begin{equoation}
+ integerBreak(n) = \left\{
+   \begin{array}{rcl}
+     n - 1 & & {n<=3} \\
+     3^a & & {b=0} \\
+     3^{a-1}\times 4 & & {b=1} \\
+     3^a\times 2 & & {b=2}
+   \end{array}
+ }\right
+ \caption{$a=n\div 3$, b = n \% 3}
+\end{equoation}</li>
+
+<li><a href="https://leetcode-cn.com/problems/integer-break/solution/343-zheng-shu-chai-fen-tan-xin-by-jyd/">数学推导</a></li>
+
+<li><p>
+代码
+</p>
+<div class="org-src-container">
+<pre class="src src-js">      <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">mathIntegerBreak</span> = (n) =&gt; {
+        <span style="color: #51afef;">if</span> (n &lt;= <span style="color: #dd8844; font-weight: bold;">3</span>) {
+          <span style="color: #51afef;">return</span> n - <span style="color: #dd8844; font-weight: bold;">1</span>;
+        }
+        <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">a</span> = Math.floor(n / <span style="color: #dd8844; font-weight: bold;">3</span>),
+          b = n % <span style="color: #dd8844; font-weight: bold;">3</span>;
+        <span style="color: #51afef;">if</span> (b === <span style="color: #dd8844; font-weight: bold;">0</span>) {
+          <span style="color: #51afef;">return</span> <span style="color: #dd8844; font-weight: bold;">3</span> ** a;
+        }
+        <span style="color: #51afef;">if</span> (b === <span style="color: #dd8844; font-weight: bold;">1</span>) {
+          <span style="color: #51afef;">return</span> <span style="color: #dd8844; font-weight: bold;">3</span> ** (a - <span style="color: #dd8844; font-weight: bold;">1</span>) * <span style="color: #dd8844; font-weight: bold;">4</span>;
+        }
+        <span style="color: #51afef;">return</span> <span style="color: #dd8844; font-weight: bold;">3</span> ** a * <span style="color: #dd8844; font-weight: bold;">2</span>;
+      };
+</pre>
+</div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6e2db2b" class="outline-4">
+<h4 id="org6e2db2b"><span class="section-number-4">1.4.9.</span> 不同的二叉搜索树</h4>
+<div class="outline-text-4" id="text-1-4-9">
+<ul class="org-ul">
+<li><a href="https://leetcode-cn.com/problems/unique-binary-search-trees/">不同的二叉搜索树</a>
+给定一个整数 n，求以 1 &#x2026; n 为节点组成的二叉搜索树有多少种？</li>
+<li>DP 五部曲
+<ol class="org-ol">
+<li>确定 dp 数组下标及含义
+dp[i]: 1 到 i  节点组成的二叉搜索树的个数 dp[i]</li>
+<li>确定递推公式
+dp[i] += dp[j-1] * dp[i-j] , j-1 为头节点左子树节点数量，i-j 为以 j 为头节点右子树节点数量</li>
+<li>dp 数组初始化
+dp[0]=1, dp[1]=1</li>
+<li>确定遍历顺序
+首先遍历节点数，然后每一个 i 遍历 j</li>
+<li>举例推导 dp 数组
+<ul class="org-ul">
+<li><p>
+n=5
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">下标 i:</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+<td class="org-right">4</td>
+<td class="org-right">5</td>
+</tr>
+
+<tr>
+<td class="org-left">dp[i]</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">5</td>
+<td class="org-right">14</td>
+<td class="org-right">42</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+</ol></li>
+<li><p>
+代码
+</p>
+<div class="org-src-container">
+<pre class="src src-js">  <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">dpNumTrees</span> = (n = <span style="color: #dd8844; font-weight: bold;">1</span>) =&gt; {
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">dp</span> = <span style="color: #51afef;">new</span> <span style="color: #ECBE7B;">Array</span>(n + <span style="color: #dd8844; font-weight: bold;">1</span>).fill(<span style="color: #dd8844; font-weight: bold;">0</span>);
+    dp[<span style="color: #dd8844; font-weight: bold;">0</span>] = <span style="color: #dd8844; font-weight: bold;">1</span>;
+    dp[<span style="color: #dd8844; font-weight: bold;">1</span>] = <span style="color: #dd8844; font-weight: bold;">1</span>;
+    <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = <span style="color: #dd8844; font-weight: bold;">2</span>; i &lt;= n; ++i) {
+      <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">j</span> = <span style="color: #dd8844; font-weight: bold;">1</span>; j &lt;= i; ++j) {
+        dp[i] += dp[j - <span style="color: #dd8844; font-weight: bold;">1</span>] * dp[i - j];
+      }
+    }
+    <span style="color: #51afef;">return</span> dp[n];
+  };
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgaf8d199" class="outline-4">
+<h4 id="orgaf8d199"><span class="section-number-4">1.4.10.</span> 01 背包理论基础 (一)</h4>
+<div class="outline-text-4" id="text-1-4-10">
+
+<div id="orgb4c131a" class="figure">
+<p><img src="https://img-blog.csdnimg.cn/20210117171307407.png" alt="20210117171307407.png" />
+</p>
+</div>
+</div>
+<ol class="org-ol">
+<li><a id="org6190eab"></a>01 背包<br />
+<div class="outline-text-5" id="text-1-4-10-1">
+<p>
+有 N 件物品和一个最多能背重量为 W 的背包。第 i 件物品的重量是 weight[i]，得到的价值是 value[i] 。每件物品只能用一次，求解将哪些物品装入背包里物品价值总和最大。
+<img src="https://img-blog.csdnimg.cn/20210117175428387.jpg" alt="20210117175428387.jpg" />
+</p>
+
+<ul class="org-ul">
+<li><p>
+暴力解法
+每一件物品其实只有两个状态，取或者不取，所以可以使用回溯法搜索出所有的情况，那么时间复杂度就是 \(O(2^n)\) ，这里的 n 表示物品数量。
+</p>
+
+<p>
+所以暴力的解法是指数级别的时间复杂度。进而才需要动态规划的解法来进行优化！
+</p>
+
+<p>
+背包最大重量为 4。
+</p>
+
+<p>
+物品为：
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">重量</td>
+<td class="org-right">价值</td>
+</tr>
+
+<tr>
+<td class="org-left">物品 0</td>
+<td class="org-right">1</td>
+<td class="org-right">15</td>
+</tr>
+
+<tr>
+<td class="org-left">物品 1</td>
+<td class="org-right">3</td>
+<td class="org-right">20</td>
+</tr>
+
+<tr>
+<td class="org-left">物品 2</td>
+<td class="org-right">4</td>
+<td class="org-right">30</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+问背包能背的物品最大价值是多少？
+</p></li>
+
+<li>二维 dp 数组 01 背包
+<ol class="org-ol">
+<li>确定 dp 数组以及下标的含义
+对于背包问题，有一种写法， 是使用二维数组，即 dp[i][j] 表示从下标为[0-i]的物品里任意取，放进容量为 j 的背包，价值总和最大是多少。
+<img src="https://img-blog.csdnimg.cn/20210110103003361.png" alt="20210110103003361.png" /></li>
+
+<li><p>
+确定递推公式
+dp[i][j]的含义：从下标为[0-i]的物品里任意取，放进容量为 j 的背包，价值总和最大是多少
+</p>
+
+<p>
+有两个方向推出来 dp[i][j]
+</p>
+<ul class="org-ul">
+<li>不放物品 i：由 dp[i - 1][j]推出，即背包容量为 j，里面不放物品 i 的最大价值，此时 dp[i][j]就是 dp[i - 1][j]。</li>
+<li>放物品 i：由 dp[i - 1][j - weight[i]]推出，dp[i - 1][j - weight[i]] 为背包容量为 j - weight[i]的时候不放物品 i 的最大价值，那么 dp[i - 1][j - weight[i]] + value[i] （物品 i 的价值），就是背包放物品 i 得到的最大价值</li>
+</ul>
+
+<p>
+dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i])
+</p></li>
+
+<li><p>
+dp 数组初始化
+首先从 dp[i][j]的定义出发，如果背包容量 j 为 0 的话，即 dp[i][0]，无论是选取哪些物品，背包价值总和一定为 0。
+<img src="https://img-blog.csdnimg.cn/2021011010304192.png" alt="2021011010304192.png" />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+<td class="org-right">4</td>
+</tr>
+
+<tr>
+<td class="org-left">物品 0 15</td>
+<td class="org-right">0</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">物品 1 20</td>
+<td class="org-right">0</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">物品 2 30</td>
+<td class="org-right">0</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+</table></li>
+
+<li>确定遍历顺序
+先遍历物品，然后遍历背包重量</li>
+
+<li><p>
+举例
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+<td class="org-right">4</td>
+</tr>
+
+<tr>
+<td class="org-left">物品 0 15 1</td>
+<td class="org-right">0</td>
+<td class="org-right">15</td>
+<td class="org-right">15</td>
+<td class="org-right">15</td>
+<td class="org-right">15</td>
+</tr>
+
+<tr>
+<td class="org-left">物品 1 20 3</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-left">物品 2 30 4</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+<td class="org-right">4</td>
+</tr>
+
+<tr>
+<td class="org-left">物品 0 15 1</td>
+<td class="org-right">0</td>
+<td class="org-right">15</td>
+<td class="org-right">15</td>
+<td class="org-right">15</td>
+<td class="org-right">15</td>
+</tr>
+
+<tr>
+<td class="org-left">物品 1 20 3</td>
+<td class="org-right">0</td>
+<td class="org-right">15</td>
+<td class="org-right">15</td>
+<td class="org-right">20</td>
+<td class="org-right">35</td>
+</tr>
+
+<tr>
+<td class="org-left">物品 2 30 4</td>
+<td class="org-right">0</td>
+<td class="org-right">15</td>
+<td class="org-right">15</td>
+<td class="org-right">15</td>
+<td class="org-right">35</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li><p>
+物品 15 20 30 55 重量为 1 3 4 5 背包重量为 6
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+<td class="org-right">4</td>
+<td class="org-right">5</td>
+<td class="org-right">6</td>
+</tr>
+
+<tr>
+<td class="org-left">物品 15</td>
+<td class="org-right">0</td>
+<td class="org-right">15</td>
+<td class="org-right">15</td>
+<td class="org-right">15</td>
+<td class="org-right">15</td>
+<td class="org-right">15</td>
+<td class="org-right">15</td>
+</tr>
+
+<tr>
+<td class="org-left">物品 20</td>
+<td class="org-right">0</td>
+<td class="org-right">15</td>
+<td class="org-right">15</td>
+<td class="org-right">20</td>
+<td class="org-right">35</td>
+<td class="org-right">35</td>
+<td class="org-right">35</td>
+</tr>
+
+<tr>
+<td class="org-left">物品 30</td>
+<td class="org-right">0</td>
+<td class="org-right">15</td>
+<td class="org-right">15</td>
+<td class="org-right">20</td>
+<td class="org-right">35</td>
+<td class="org-right">45</td>
+<td class="org-right">45</td>
+</tr>
+
+<tr>
+<td class="org-left">物品 55</td>
+<td class="org-right">0</td>
+<td class="org-right">15</td>
+<td class="org-right">15</td>
+<td class="org-right">20</td>
+<td class="org-right">35</td>
+<td class="org-right">55</td>
+<td class="org-right">70</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+</ol></li>
+
+<li><p>
+代码
+</p>
+<div class="org-src-container">
+<pre class="src src-js">  <span style="color: #51afef;">function</span> <span style="color: #c678dd;">testWeightBagProblem</span>(<span style="color: #dcaeea;">weight</span> = [], <span style="color: #dcaeea;">value</span> = [], <span style="color: #dcaeea;">size</span> = <span style="color: #dd8844; font-weight: bold;">0</span>) {
+    <span style="color: #51afef;">const</span> <span style="color: #dcaeea;">len</span> = weight.length;
+    <span style="color: #51afef;">const</span> <span style="color: #dcaeea;">dp</span> = Array.from({ length: len + <span style="color: #dd8844; font-weight: bold;">1</span> }).map(() =&gt; Array(size + <span style="color: #dd8844; font-weight: bold;">1</span>).fill(<span style="color: #dd8844; font-weight: bold;">0</span>));
+
+    <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = <span style="color: #dd8844; font-weight: bold;">1</span>; i &lt;= len; ++i) {
+        <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">j</span> = <span style="color: #dd8844; font-weight: bold;">0</span>; j &lt;= size; ++j) {
+        <span style="color: #51afef;">if</span> (weight[i - <span style="color: #dd8844; font-weight: bold;">1</span>] &lt;= j) {
+            dp[i][j] = Math.max(
+            dp[i - <span style="color: #dd8844; font-weight: bold;">1</span>][j],
+            value[i - <span style="color: #dd8844; font-weight: bold;">1</span>] + dp[i - <span style="color: #dd8844; font-weight: bold;">1</span>][j - weight[i - <span style="color: #dd8844; font-weight: bold;">1</span>]]
+            );
+        } <span style="color: #51afef;">else</span> {
+            dp[i][j] = dp[i - <span style="color: #dd8844; font-weight: bold;">1</span>][j];
+        }
+        }
+    }
+
+    <span style="color: #51afef;">return</span> dp[len][size];
+  }
+</pre>
+</div></li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org99d4896" class="outline-4">
+<h4 id="org99d4896"><span class="section-number-4">1.4.11.</span> 01 背包理论基础 (二)</h4>
+<div class="outline-text-4" id="text-1-4-11">
+<p>
+使用 一维 dp 数组（滚动数组）
+</p>
+<ol class="org-ol">
+<li>确定 dp 数组的含义
+dp[j] 表示：容量为 j 的背包，所背的物品价值最大为 dp[j]</li>
+<li><p>
+一维 dp 数组的递推公式
+dp[j]可以通过 dp[j - weight[i]]推导出来，dp[j - weight[i]]表示容量为 j - weight[i]的背包所背的最大价值
+</p>
+
+<p>
+dp[j - weight[i]] + value[i] 表示 容量为 j - 物品 i 重量 的背包 加上 物品 i 的价值。（也就是容量为 j 的背包，放入物品 i 了之后的价值即：dp[j]）
+</p>
+
+<p>
+此时 dp[j]有两个选择，一个是取自己 dp[j] 相当于 二维 dp 数组中的 dp[i-1][j]，即不放物品 i，一个是取 dp[j - weight[i]] + value[i]，即放物品 i，指定是取最大的，毕竟是求最大价值，
+</p>
+
+<p>
+所以: dp[j] = max(dp[j], dp[j - weight[i]] + value[i]);
+</p></li>
+
+<li>初始化
+假设物品价值都是大于 0 的，所以 dp 数组初始化的时候，都初始为 0 就可以了</li>
+
+<li><p>
+一维 dp 数组遍历的顺序
+二维 dp 遍历的时候，背包容量是从小到大，而一维 dp 遍历的时候，背包是从大到小
+</p>
+
+<p>
+倒叙遍历是为了保证物品 i 只被放入一次！。但如果一旦正序遍历了，那么物品 0 就会被重复加入多次！
+</p></li>
+
+<li>举例推导 dp 数组
+<ul class="org-ul">
+<li><p>
+物品 15 20 30 重量为 1 3 4 背包容量为 4
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">用物品 0 遍历背包</td>
+<td class="org-right">0</td>
+<td class="org-right">15</td>
+<td class="org-right">15</td>
+<td class="org-right">15</td>
+<td class="org-right">15</td>
+</tr>
+
+<tr>
+<td class="org-left">用物品 1 遍历背包</td>
+<td class="org-right">0</td>
+<td class="org-right">15</td>
+<td class="org-right">15</td>
+<td class="org-right">20</td>
+<td class="org-right">35</td>
+</tr>
+
+<tr>
+<td class="org-left">用物品 2 遍历背包</td>
+<td class="org-right">0</td>
+<td class="org-right">15</td>
+<td class="org-right">15</td>
+<td class="org-right">20</td>
+<td class="org-right">35</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+
+<li><p>
+代码
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">function</span> <span style="color: #c678dd;">testWeightBagProblem2</span>(<span style="color: #dcaeea;">weight</span> = [], <span style="color: #dcaeea;">value</span> = [], <span style="color: #dcaeea;">size</span> = <span style="color: #dd8844; font-weight: bold;">0</span>) {
+        <span style="color: #51afef;">const</span> <span style="color: #dcaeea;">len</span> = weight.length;
+        <span style="color: #51afef;">const</span> <span style="color: #dcaeea;">dp</span> = Array(size + <span style="color: #dd8844; font-weight: bold;">1</span>).fill(<span style="color: #dd8844; font-weight: bold;">0</span>);
+        <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = <span style="color: #dd8844; font-weight: bold;">1</span>; i &lt;= len; ++i) {
+            <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">j</span> = size; j &gt;= weight[i - <span style="color: #dd8844; font-weight: bold;">1</span>]; --j) {
+            dp[j] = Math.max(dp[j], value[i - <span style="color: #dd8844; font-weight: bold;">1</span>] + dp[j - weight[i - <span style="color: #dd8844; font-weight: bold;">1</span>]]);
+            }
+        }
+        <span style="color: #51afef;">return</span> dp[size];
+    }
+</pre>
+</div></li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3d876dd" class="outline-3">
+<h3 id="org3d876dd"><span class="section-number-3">1.5.</span> 排序算法</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+排序算法可以分为
+</p>
+<ul class="org-ul">
+<li>内部排序: 内部排序是数据记录在内存中进行排序
+<ul class="org-ul">
+<li>稳定
+<ul class="org-ul">
+<li>冒泡排序</li>
+<li>插入排序</li>
+<li>归并排序</li>
+<li>基数排序</li>
+<li>计数排序</li>
+<li>桶排序</li>
+</ul></li>
+<li>不稳定
+<ul class="org-ul">
+<li>选择排序</li>
+<li>希尔排序</li>
+<li>快速排序</li>
+<li>堆排序</li>
+</ul></li>
+</ul></li>
+<li>外部排序，而外部排序是因排序的数据很大，一次不能容纳全部的排序记录，在排序过程中需要访问外存</li>
+<li>用一张图概括：</li>
+</ul>
+
+
+<div id="orgc015921" class="figure">
+<p><img src="https://sort.hust.cc/~/files/v0/b/gitbook-28427.appspot.com/o/assets%2F-Lm9JtwbhXVOfXyecToy%2F-Lm9KQIJAMvCgJQzErQS%2F-Lm9KSPi7v-ygMtlI6Zr%2Fsort.png?generation=1565688978687703&amp;alt=media" alt="assets%2F-Lm9JtwbhXVOfXyecToy%2F-Lm9KQIJAMvCgJQzErQS%2F-Lm9KSPi7v-ygMtlI6Zr%2Fsort.png?generation=1565688978687703&amp;alt=media" />
+</p>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">排序算法</th>
+<th scope="col" class="org-left">平均时间复杂度</th>
+<th scope="col" class="org-left">最好情况</th>
+<th scope="col" class="org-left">最坏情况</th>
+<th scope="col" class="org-left">空间复杂度</th>
+<th scope="col" class="org-left">排序方式</th>
+<th scope="col" class="org-left">稳定性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">冒泡排序</td>
+<td class="org-left">O(n<sup>2</sup>)</td>
+<td class="org-left">O(n)</td>
+<td class="org-left">O(n<sup>2</sup>)</td>
+<td class="org-left">O(1)</td>
+<td class="org-left">In-place</td>
+<td class="org-left">稳定</td>
+</tr>
+
+<tr>
+<td class="org-left">选择排序</td>
+<td class="org-left">O(n<sup>2</sup>)</td>
+<td class="org-left">O(n<sup>2</sup>)</td>
+<td class="org-left">O(n<sup>2</sup>)</td>
+<td class="org-left">O(1)</td>
+<td class="org-left">In-place</td>
+<td class="org-left">不稳定</td>
+</tr>
+
+<tr>
+<td class="org-left">插入排序</td>
+<td class="org-left">O(n<sup>2</sup>)</td>
+<td class="org-left">O(n)</td>
+<td class="org-left">O(n<sup>2</sup>)</td>
+<td class="org-left">O(1)</td>
+<td class="org-left">In-place</td>
+<td class="org-left">稳定</td>
+</tr>
+
+<tr>
+<td class="org-left">希尔排序</td>
+<td class="org-left">\(O(n log n)\)</td>
+<td class="org-left">\(O(n log^2 n\)</td>
+<td class="org-left">\(O(n log^2 n)\)</td>
+<td class="org-left">O(1)</td>
+<td class="org-left">In-place</td>
+<td class="org-left">不稳定</td>
+</tr>
+
+<tr>
+<td class="org-left">归并排序</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">快速排序</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">堆排序</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">计数排序</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">桶排序</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">基数排序</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>名词解释
+<ul class="org-ul">
+<li>n：数据规模</li>
+<li>k: 桶 的个数</li>
+<li>In-place: 占用常数内存，不占用额外内存</li>
+<li>Out-place: 占用额外内存</li>
+<li>稳定性: 排序后 2 个 相等键值的顺序和排序之前顺序相同</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-org6064ce1" class="outline-4">
+<h4 id="org6064ce1"><span class="section-number-4">1.5.1.</span> 冒泡排序</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<p>
+<b>冒泡排序</b> （Bubble Sort）也是一种简单直观的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #51afef;">function</span> <span style="color: #c678dd;">bubbleSort</span>(<span style="color: #dcaeea;">arr</span> = []) {
+  <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">len</span> = arr.length,
+    temp = <span style="color: #dd8844; font-weight: bold;">0</span>;
+  <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = <span style="color: #dd8844; font-weight: bold;">0</span>; i &lt; len - <span style="color: #dd8844; font-weight: bold;">1</span>; ++i) {
+    <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">j</span> = <span style="color: #dd8844; font-weight: bold;">0</span>; j &lt; len - i - <span style="color: #dd8844; font-weight: bold;">1</span>; ++j) {
+      <span style="color: #51afef;">if</span> (arr[j] &gt; arr[j + <span style="color: #dd8844; font-weight: bold;">1</span>]) {
+        temp = arr[j + <span style="color: #dd8844; font-weight: bold;">1</span>];
+        arr[j + <span style="color: #dd8844; font-weight: bold;">1</span>] = arr[j];
+        arr[j] = temp;
+      }
+    }
+  }
+
+  <span style="color: #51afef;">return</span> arr;
+}
+</pre>
+</div>
+
+
+<div id="orge0fdae8" class="figure">
+<p><img src="./images/bubbleSort.gif" alt="bubbleSort.gif" />
+</p>
+</div>
+
+<ul class="org-ul">
+<li>冒泡排序每一次遍历将当下的最大值冒泡到最后一个位置</li>
+
+<li>使用两层循环
+<ol class="org-ol">
+<li>比较相邻的元素，如果第一个比第二个大，交换两个值</li>
+<li>对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。这步做完后，最后的元素会是最大的数</li>
+<li>针对所有的元素重复以上的步骤，除了最后一个</li>
+<li>持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较</li>
+</ol></li>
+
+<li>当输入数据已经是正序是最快，达到最好情况</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org75b105d" class="outline-4">
+<h4 id="org75b105d"><span class="section-number-4">1.5.2.</span> 选择排序</h4>
+<div class="outline-text-4" id="text-1-5-2">
+<p>
+选择排序是一种简单直观的排序算法，无论什么数据进去都是 O(n²) 的时间复杂度。所以用到它的时候，数据规模越小越好。唯一的好处可能就是不占用额外的内存空间。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #51afef;">function</span> <span style="color: #c678dd;">selectSort</span>(<span style="color: #dcaeea;">arr</span> = []) {
+  <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">len</span> = arr.length,
+    minIndex,
+    temp;
+  <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = <span style="color: #dd8844; font-weight: bold;">0</span>; i &lt; len - <span style="color: #dd8844; font-weight: bold;">1</span>; ++i) {
+    minIndex = i;
+    <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">j</span> = i + <span style="color: #dd8844; font-weight: bold;">1</span>; j &lt; len; ++j) {
+      <span style="color: #51afef;">if</span> (arr[j] &lt; arr[minIndex]) {
+        minIndex = j;
+      }
+    }
+    temp = arr[i];
+    arr[i] = arr[minIndex];
+    arr[minIndex] = temp;
+  }
+
+  <span style="color: #51afef;">return</span> arr;
+}
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>算法步骤
+<ol class="org-ol">
+<li>首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置</li>
+<li>再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾</li>
+<li>重复第二步，直到所有元素均排序完毕</li>
+</ol></li>
+</ul>
+
+
+<div id="org31f2996" class="figure">
+<p><img src="./images/selectionSort.gif" alt="selectionSort.gif" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6cb55ba" class="outline-4">
+<h4 id="org6cb55ba"><span class="section-number-4">1.5.3.</span> 插入排序</h4>
+<div class="outline-text-4" id="text-1-5-3">
+<p>
+插入排序是一种最简单直观的排序算法，它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入
+</p>
+
+<ul class="org-ul">
+<li>算法步骤
+<ol class="org-ol">
+<li>将第一待排序序列第一个元素看做一个有序序列，把第二个元素到最后一个元素当成是未排序序列</li>
+<li>从头到尾依次扫描未排序序列，将扫描到的每个元素插入有序序列的适当位置。（如果待插入的元素与有序序列中的某个元素相等，则将待插入元素插入到相等元素的后面。</li>
+</ol></li>
+
+<li>动图演示
+<img src="./images/insertSort.gif" alt="insertSort.gif" /></li>
+
+<li><p>
+代码
+</p>
+<div class="org-src-container">
+<pre class="src src-js">    <span style="color: #51afef;">function</span> <span style="color: #c678dd;">insertSort</span>(<span style="color: #dcaeea;">arr</span> = []) {
+    <span style="color: #51afef;">let</span> <span style="color: #dcaeea;">len</span> = arr.length,
+        preIndex = <span style="color: #dd8844; font-weight: bold;">0</span>,
+        current = <span style="color: #dd8844; font-weight: bold;">0</span>;
+    <span style="color: #51afef;">for</span> (<span style="color: #51afef;">let</span> <span style="color: #dcaeea;">i</span> = <span style="color: #dd8844; font-weight: bold;">1</span>; i &lt; len; ++i) {
+        current = arr[i];
+        preIndex = i - <span style="color: #dd8844; font-weight: bold;">1</span>;
+        <span style="color: #51afef;">while</span> (preIndex &gt;= <span style="color: #dd8844; font-weight: bold;">0</span> &amp;&amp; arr[preIndex] &gt; current) {
+        arr[preIndex + <span style="color: #dd8844; font-weight: bold;">1</span>] = arr[preIndex];
+        --preIndex;
+        }
+        arr[preIndex + <span style="color: #dd8844; font-weight: bold;">1</span>] = current;
+    }
+
+    <span style="color: #51afef;">return</span> arr;
+    }
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6a835e6" class="outline-4">
+<h4 id="org6a835e6"><span class="section-number-4">1.5.4.</span> 希尔排序</h4>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Zhou Xianghui</p>
+<p class="date">Created: 2022-01-08 Sat 22:03</p>
+</div>
+</body>
+</html>
